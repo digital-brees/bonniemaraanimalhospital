@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bonnie Mara — Mockup picker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #3D5A7A; --ink-deep: #2A4360; --sea: #A3BBD2;
+      --cream: #F4ECDC; --brick: #B86E4A;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink-deep); padding: 64px 32px; line-height: 1.6; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px; margin: 0 0 8px; }
+    .lede { color: var(--ink); margin: 0 0 40px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 22px; }
+    .card { display: block; padding: 28px 32px; background: #FFFCF5; border: 1px solid #E0D5BD; margin-bottom: 16px; text-decoration: none; color: inherit; transition: all 0.2s ease; }
+    .card:hover { border-color: var(--brick); transform: translateX(4px); }
+    .card .label { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--brick); margin: 0 0 8px; }
+    .card .title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; margin: 0 0 8px; color: var(--ink-deep); }
+    .card .desc { margin: 0; color: var(--ink); font-size: 15px; }
+    .card .arrow { float: right; font-size: 24px; color: var(--brick); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Bonnie Mara — three mockups</h1>
+    <p class="lede">Same palette, same copy. Three concepts. Open each, pick one.</p>
+
+    <a class="card" href="style-a-editorial-letter.html">
+      <span class="arrow">→</span>
+      <p class="label">Style A</p>
+      <p class="title">Editorial Letter</p>
+      <p class="desc">Two-column. A magazine-style headline + mailing-list signup on the left. A "note about the name" rendered as a paper letter on the right.</p>
+    </a>
+
+    <a class="card" href="style-b-ocean-horizon.html">
+      <span class="arrow">→</span>
+      <p class="label">Style B</p>
+      <p class="title">Ocean Horizon</p>
+      <p class="desc">Cinematic full-bleed top: deep blue "sea" with a giant editorial wordmark. Cream paper rises beneath with the signup form.</p>
+    </a>
+
+    <a class="card" href="style-c-seal-front.html">
+      <span class="arrow">→</span>
+      <p class="label">Style C</p>
+      <p class="title">Seal Front-and-Center</p>
+      <p class="desc">A framed announcement card with brick deckle borders. The logo seal is the hero. Stamp-style and confident.</p>
+    </a>
+  </div>
+</body>
+</html>

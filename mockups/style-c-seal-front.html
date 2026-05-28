@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style C — Seal Front · Bonnie Mara Animal Hospital</title>
+  <meta name="description" content="Something new is coming to Santa Barbara. Opening Summer 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #3D5A7A;
+      --ink-deep: #2A4360;
+      --sea: #A3BBD2;
+      --cream: #F4ECDC;
+      --cream-deep: #ECE0CB;
+      --brick: #B86E4A;
+      --brick-deep: #9A5736;
+      --brick-pale: #E2C2AC;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink-deep);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Top bar --- */
+    .topbar {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 48px;
+      z-index: 10;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .topbar .left { display: flex; align-items: center; gap: 12px; }
+    .topbar .left .pip { width: 7px; height: 7px; background: var(--brick); border-radius: 50%; }
+    .topbar .right { display: flex; align-items: center; gap: 24px; }
+    .topbar .dot { width: 5px; height: 5px; background: var(--brick); border-radius: 50%; }
+
+    /* --- Hero with brick deckle frame --- */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 48px 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .frame {
+      position: relative;
+      max-width: 1080px;
+      width: 100%;
+      background: #FFFCF5;
+      padding: 80px 64px 72px;
+      text-align: center;
+      border: 1px solid var(--brick-pale);
+    }
+    /* Outer brick "deckle" double-stripe */
+    .frame::before,
+    .frame::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+    .frame::before {
+      inset: -14px;
+      border: 1px solid var(--brick);
+    }
+    .frame::after {
+      inset: 16px;
+      border: 1px dashed var(--brick-pale);
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin: 0 0 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--brick);
+    }
+
+    .stamp {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink);
+      margin: 0 0 32px;
+    }
+
+    .seal-wrap {
+      width: clamp(220px, 28vw, 320px);
+      height: clamp(220px, 28vw, 320px);
+      margin: 0 auto 40px;
+      position: relative;
+    }
+    .seal-wrap::before,
+    .seal-wrap::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: clamp(60px, 8vw, 100px);
+      height: 1px;
+      background: var(--brick);
+    }
+    .seal-wrap::before { right: 100%; margin-right: 32px; }
+    .seal-wrap::after { left: 100%; margin-left: 32px; }
+    .seal-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    h1.wordmark {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(40px, 5.4vw, 76px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink-deep);
+      margin: 0 0 16px;
+    }
+    h1.wordmark em {
+      font-style: italic;
+      color: var(--brick);
+      font-weight: 400;
+    }
+    .sub {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sub .div {
+      width: 6px; height: 6px;
+      background: var(--brick);
+      border-radius: 50%;
+    }
+
+    /* Mailing list */
+    .ml-form {
+      display: flex;
+      gap: 0;
+      max-width: 520px;
+      margin: 0 auto;
+      border: 1px solid var(--ink-deep);
+      background: var(--cream);
+    }
+    .ml-form input {
+      flex: 1;
+      padding: 18px 20px;
+      border: 0;
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink-deep);
+      outline: none;
+    }
+    .ml-form input::placeholder { color: #9AA5B4; font-style: italic; }
+    .ml-form button {
+      padding: 18px 28px;
+      background: var(--ink-deep);
+      color: var(--cream);
+      border: 0;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .ml-form button:hover { background: var(--brick-deep); }
+
+    .ml-foot {
+      font-size: 12px;
+      color: #7A8696;
+      margin: 14px 0 0;
+    }
+
+    /* Below the fold */
+    .below {
+      padding: 96px 48px;
+      background: var(--cream-deep);
+      text-align: center;
+    }
+    .below .small {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin: 0 0 24px;
+    }
+    .below h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.3;
+      color: var(--ink-deep);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 920px) {
+      .topbar { padding: 20px 24px; }
+      .topbar .right span:not(.dot) { display: none; }
+      .hero { padding: 100px 16px 64px; }
+      .frame { padding: 56px 28px 48px; }
+      .seal-wrap::before, .seal-wrap::after { display: none; }
+      .below { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="left">
+      <span class="pip"></span>
+      <span>Bonnie Mara Animal Hospital</span>
+    </div>
+    <div class="right">
+      <span>Santa Barbara, CA</span>
+      <span class="dot"></span>
+      <span>Opening Summer 2026</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="frame">
+        <p class="eyebrow">Est. Summer 2026</p>
+        <p class="stamp">Something new is coming to Santa Barbara.</p>
+
+        <div class="seal-wrap">
+          <img src="../assets/logo/logo-page-1.png" alt="Bonnie Mara Animal Hospital seal" />
+        </div>
+
+        <h1 class="wordmark">Bonnie Mara <em>Animal Hospital</em></h1>
+        <p class="sub">
+          <span>Santa Barbara</span>
+          <span class="div"></span>
+          <span>For dogs &amp; cats</span>
+          <span class="div"></span>
+          <span>Independently owned</span>
+        </p>
+
+        <form class="ml-form" onsubmit="event.preventDefault(); alert('Mailing list signup placeholder — wire to JotForm');">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required />
+          <button type="submit">Notify me</button>
+        </form>
+        <p class="ml-foot">We&rsquo;ll email you once when appointments open.</p>
+      </div>
+    </section>
+
+    <section class="below">
+      <p class="small">A note from Dr. Putnam</p>
+      <h2>&ldquo;Bonnie Mara&rdquo; means beautiful ocean, in Scot&rsquo;s Gaelic &mdash; a name shaped by my Scottish roots and the beaches I&rsquo;ve walked my whole life here in Santa Barbara.</h2>
+    </section>
+  </main>
+
+</body>
+</html>

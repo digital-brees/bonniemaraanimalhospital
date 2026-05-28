@@ -4,9 +4,1411 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bonnie Mara Animal Hospital — Opening Summer 2026 in Santa Barbara</title>
-  <meta name="description" content="Independently owned veterinary care opening Summer 2026 at 4860 Calle Real in Santa Barbara. Low-stress, individualized care for dogs and cats." />
+  <meta name="description" content="Independently owned veterinary care opening Summer 2026 at 4860 Calle Real in Santa Barbara. Low-stress, individualized care for dogs and cats by Dr. Le Putnam." />
+  <meta name="theme-color" content="#2A4360" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/images/santa-barbara-sunrise.jpg" />
+
+  <style>
+    :root {
+      --ink: #3D5A7A;
+      --ink-deep: #2A4360;
+      --ink-night: #1B2F47;
+      --sea: #A3BBD2;
+      --sea-pale: #C9D8E6;
+      --mist: #EAF0F6;          /* cool sea-mist — replaces warm cream-deep */
+      --cream: #F9F5EE;         /* near-white with a hint of warmth — was #F4ECDC */
+      --cream-paper: #FFFFFF;   /* clean white for card surfaces */
+      --brick: #B86E4A;         /* secondary accent — used sparingly */
+      --brick-deep: #9A5736;
+      --brick-pale: #E2C2AC;
+      --paper-line: #DDE3EA;    /* cool, neutral divider line — was warm tan */
+      --muted: #4A5868;
+      --quiet: #7A8696;
+
+      --display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink-deep);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, video, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    ::selection { background: var(--brick); color: var(--cream); }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .eyebrow::before, .eyebrow.both::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--ink);
+    }
+    .eyebrow.dark { color: var(--sea-pale); }
+    .eyebrow.dark::before, .eyebrow.dark::after { background: var(--sea-pale); }
+
+    /* ============================ TOPBAR ============================ */
+    .topbar {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 40px;
+      z-index: 10;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+    }
+    .topbar .seal {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.94);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .topbar .seal img { width: 100%; height: 100%; object-fit: contain; }
+    .topbar .right { display: flex; align-items: center; gap: 20px; }
+    .topbar .dot { width: 4px; height: 4px; background: var(--sea-pale); border-radius: 50%; }
+
+    /* ============================ HERO — full video, no band ============================ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 720px;
+      background: var(--ink-night);
+      color: var(--cream);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-media { position: absolute; inset: 0; z-index: 0; }
+    .hero-media img,
+    .hero-media video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-media img { position: absolute; inset: 0; object-position: center 55%; }
+    .hero-media video { object-position: center 60%; }
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background: rgba(20, 36, 56, 0.32);
+      z-index: 1;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(64px, 10vh, 120px);
+    }
+    .hero-inner .lead-in {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.84);
+      margin: 0 0 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-inner .lead-in::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.6);
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(64px, 10vw, 152px);
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      margin: 0 0 40px;
+      color: #FFFFFF;
+      max-width: 16ch;
+    }
+    .hero h1 .light {
+      font-weight: 300;
+      color: var(--sea-pale);
+    }
+    .hero-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-row .left {
+      font-family: var(--sans);
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.86);
+      max-width: 42ch;
+      margin: 0;
+    }
+    .hero-row .right {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+      text-align: right;
+      line-height: 1.9;
+    }
+    .hero-row .right .pin {
+      color: var(--sea-pale);
+      margin-right: 8px;
+    }
+
+    /* ============================ NAME STORY (reverted to V1 centered) ============================ */
+    .story {
+      position: relative;
+      background: var(--cream);
+      padding: clamp(120px, 18vh, 180px) 48px clamp(96px, 14vh, 140px);
+      text-align: center;
+    }
+    /* Seal cutout at the top — visual link from hero into paper */
+    .story .seal-inset {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 112px; height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 0 0 1px var(--ink), 0 0 0 14px var(--cream);
+    }
+    .story .seal-inset img { width: 100%; height: 100%; object-fit: contain; }
+
+    .story h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 56px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink-deep);
+      max-width: 18ch;
+      margin: 0 auto 32px;
+    }
+    .story h2 .light {
+      font-weight: 300;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .story-prose {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .story-prose p {
+      font-family: var(--sans);
+      font-size: clamp(17px, 1.3vw, 19px);
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0 0 1.2em;
+    }
+    .story-prose p:last-child { margin-bottom: 0; }
+    .story-prose em { color: var(--ink); font-style: italic; }
+
+    .signature {
+      margin-top: 40px;
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .signature::before {
+      content: '— ';
+      color: var(--ink);
+      font-style: normal;
+    }
+
+    /* Signup inline beneath story */
+    .signup {
+      max-width: 540px;
+      margin: 56px auto 0;
+    }
+    .signup .label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .ml-form {
+      display: flex;
+      border: 1px solid var(--ink-deep);
+      background: var(--cream-paper);
+    }
+    .ml-form input {
+      flex: 1;
+      padding: 18px 22px;
+      border: 0;
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink-deep);
+      outline: none;
+    }
+    .ml-form input::placeholder { color: var(--quiet); font-style: italic; }
+    .ml-form button {
+      padding: 18px 30px;
+      background: var(--ink-deep);
+      color: #FFFFFF;
+      border: 0;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    .ml-form button:hover { background: var(--ink-night); }
+    .ml-foot {
+      font-size: 12px;
+      color: var(--quiet);
+      margin: 14px 0 0;
+      font-family: var(--sans);
+      font-style: italic;
+    }
+
+    /* ============================ EDITORIAL IMAGE BAND — Santa Barbara dog ============================ */
+    .image-band {
+      position: relative;
+      height: clamp(420px, 62vh, 640px);
+      overflow: hidden;
+      background: var(--ink-night);
+    }
+    .image-band img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+    .image-band::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(27, 47, 71, 0.40);
+    }
+    .image-band .caption {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 56px;
+      gap: 32px;
+    }
+    .image-band .caption .line {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(20px, 1.8vw, 28px);
+      line-height: 1.35;
+      color: #FFFFFF;
+      max-width: 32ch;
+      margin: 0;
+    }
+    .image-band .caption .credit {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-align: right;
+      line-height: 1.6;
+    }
+    .image-band .caption .credit .dot { color: var(--sea-pale); margin: 0 6px; }
+
+    /* ============================ BRICK PULL-QUOTE ============================ */
+    .quote {
+      position: relative;
+      padding: clamp(120px, 20vh, 200px) 48px;
+      background-color: var(--brick-deep);
+      background-image: url('assets/images/brick-wall.jpg');
+      background-size: cover;
+      background-position: center;
+      color: var(--cream);
+      text-align: center;
+      isolation: isolate;
+    }
+    .quote::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(27, 47, 71, 0.86);
+      z-index: 0;
+    }
+    .quote-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quote-text {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.4vw, 60px);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: #FFFFFF;
+      margin: 0 auto 40px;
+      max-width: 22ch;
+    }
+    .quote-text .light {
+      font-weight: 300;
+      color: var(--sea-pale);
+      font-style: italic;
+    }
+    .quote-attr {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .quote-attr::before,
+    .quote-attr::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    /* ============================ SERVICES — split: list + image ============================ */
+    .services {
+      background: var(--cream);
+      padding: 0;
+    }
+    .services-grid {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .services-list-col {
+      padding: clamp(96px, 16vh, 160px) clamp(40px, 6vw, 88px) clamp(96px, 16vh, 160px);
+    }
+    .services-image-col {
+      position: relative;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .services-image-col img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .services-head h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink-deep);
+      margin: 0 0 24px;
+      max-width: 18ch;
+    }
+    .services-head h2 .light {
+      font-weight: 300;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .services-head .lede {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0 0 64px;
+      max-width: 36ch;
+    }
+
+    .services-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .service {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      column-gap: 24px;
+      padding: 28px 0;
+      border-top: 1px solid var(--paper-line);
+      align-items: baseline;
+    }
+    .service:last-child { border-bottom: 1px solid var(--paper-line); }
+    .service .num {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      color: var(--ink);
+      padding-top: 6px;
+    }
+    .service h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink-deep);
+      margin: 0 0 8px;
+    }
+    .service p {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+      max-width: 48ch;
+    }
+
+    /* ============================ Q&A ============================ */
+    .qa {
+      background: var(--mist);
+      padding: clamp(96px, 16vh, 160px) 0;
+    }
+    .qa-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .qa-head {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      column-gap: 64px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+    .qa-head .eyebrow {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+      align-self: end;
+      margin-bottom: 4px;
+    }
+    .qa-head h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.6vw, 60px);
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      color: var(--ink-deep);
+      margin: 0;
+      max-width: 16ch;
+    }
+    .qa-head h2 .light { font-weight: 300; color: var(--ink); font-style: italic; }
+
+    .qa-cols {
+      column-count: 2;
+      column-gap: 64px;
+    }
+    .qa-item {
+      break-inside: avoid;
+      margin: 0 0 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--paper-line);
+    }
+    .qa-item:last-child { border-bottom: 0; }
+    .qa-q {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 1.3;
+      color: var(--ink-deep);
+      margin: 0 0 12px;
+      letter-spacing: -0.005em;
+    }
+    .qa-q::before {
+      content: 'Q  ';
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.16em;
+    }
+    .qa-a {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+      padding-left: 0;
+    }
+    .qa-a p { margin: 0 0 0.7em; }
+    .qa-a p:last-child { margin-bottom: 0; }
+    .qa-a a { color: var(--ink-deep); text-decoration: underline; text-decoration-color: var(--sea); text-underline-offset: 3px; }
+
+    /* ============================ QUIET CAT MOMENT — between Q&A and careers ============================ */
+    .quiet {
+      position: relative;
+      height: clamp(360px, 50vh, 520px);
+      overflow: hidden;
+      background: var(--ink-night);
+    }
+    .quiet img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .quiet::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(27, 47, 71, 0.45);
+    }
+    .quiet .label {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      display: inline-flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .quiet .label::before,
+    .quiet .label::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: rgba(255,255,255,0.55);
+    }
+
+    /* ============================ CAREERS ============================ */
+    .careers {
+      background: var(--ink-night);
+      color: var(--cream);
+      padding: clamp(96px, 16vh, 160px) 48px;
+    }
+    .careers-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .careers-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(201, 216, 230, 0.28);
+      margin-bottom: 64px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--sea-pale);
+    }
+    .careers-top .ed { color: rgba(244, 236, 220, 0.72); }
+
+    .careers-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .careers-grid h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: clamp(48px, 7.2vw, 112px);
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+      color: #FFFFFF;
+      margin: 0 0 24px;
+    }
+    .careers-grid h2 .light {
+      display: block;
+      font-weight: 300;
+      color: var(--sea-pale);
+      font-style: italic;
+      font-size: 0.42em;
+      letter-spacing: -0.015em;
+      margin-top: 20px;
+      line-height: 1.25;
+    }
+    .careers-grid .right p {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(244, 236, 220, 0.86);
+      margin: 0 0 1.2em;
+    }
+    .careers-grid .right p em { color: var(--sea-pale); font-style: italic; font-weight: 500; }
+
+    .careers-roles {
+      margin-top: 56px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(201, 216, 230, 0.28);
+      border-bottom: 1px solid rgba(201, 216, 230, 0.28);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .careers-roles .role {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 19px;
+      color: #FFFFFF;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+    .careers-roles .role .ab {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sea-pale);
+      margin-top: 8px;
+    }
+
+    .careers-cta {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .btn-apply {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 36px;
+      background: var(--brick);
+      color: #FFFFFF;
+      border: 0;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+    .btn-apply:hover {
+      background: var(--brick-deep);
+      transform: translateY(-1px);
+    }
+    .btn-apply svg { width: 16px; height: 16px; }
+    .careers-cta .aside {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(244, 236, 220, 0.6);
+      max-width: 34ch;
+      text-align: right;
+      margin: 0;
+    }
+
+    /* ============================ INVITATION — address + signup ============================ */
+    .invite {
+      background: var(--cream);
+      padding: clamp(96px, 16vh, 160px) 0 80px;
+    }
+    .invite-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .invite-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--paper-line);
+      align-items: end;
+    }
+    .invite-top h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.8vw, 64px);
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      color: var(--ink-deep);
+      margin: 0;
+    }
+    .invite-top h2 .light { font-weight: 300; color: var(--ink); font-style: italic; }
+    .invite-top .right p {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+      max-width: 44ch;
+    }
+
+    .invite-card {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .address .line1 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink-deep);
+      margin: 0 0 6px;
+    }
+    .address .line2 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(20px, 1.8vw, 26px);
+      color: var(--ink);
+      margin: 0 0 36px;
+      letter-spacing: -0.015em;
+      font-style: italic;
+    }
+    .address-grid {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      column-gap: 48px;
+      row-gap: 24px;
+      padding-top: 32px;
+      border-top: 1px solid var(--paper-line);
+    }
+    .address-grid .k {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+    .address-grid .v {
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--ink-deep);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .closer-signup {
+      padding: 36px 36px 40px;
+      background: var(--ink-deep);
+      color: var(--cream);
+    }
+    .closer-signup .small {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--sea-pale);
+      margin: 0 0 16px;
+    }
+    .closer-signup h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(24px, 2.4vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: #FFFFFF;
+      margin: 0 0 24px;
+    }
+    .closer-signup h3 .light { font-weight: 300; color: var(--sea-pale); font-style: italic; }
+    .closer-signup form { display: flex; flex-direction: column; gap: 10px; }
+    .closer-signup input {
+      padding: 14px 16px;
+      border: 1px solid rgba(201, 216, 230, 0.4);
+      background: transparent;
+      color: #FFFFFF;
+      font-family: var(--sans);
+      font-size: 14px;
+      outline: none;
+    }
+    .closer-signup input::placeholder { color: rgba(244, 236, 220, 0.55); font-style: italic; }
+    .closer-signup button {
+      padding: 14px 16px;
+      background: var(--sea);
+      color: var(--ink-deep);
+      border: 0;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    .closer-signup button:hover { background: var(--sea-pale); }
+    .closer-signup .fine {
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(244, 236, 220, 0.6);
+      margin: 14px 0 0;
+    }
+
+    /* ============================ FOOTER ============================ */
+    footer.site {
+      background: var(--ink-night);
+      color: var(--cream);
+      padding: 64px 48px 32px;
+    }
+    footer.site .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(201, 216, 230, 0.18);
+    }
+    footer.site .brand { display: flex; align-items: center; gap: 18px; }
+    footer.site .seal {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--cream);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    footer.site .seal img { width: 100%; height: 100%; object-fit: contain; }
+    footer.site .brand .name {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+    }
+    footer.site .brand .tag {
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--sea-pale);
+      margin-top: 2px;
+    }
+    footer.site nav {
+      display: flex;
+      gap: 28px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+    footer.site nav a {
+      color: rgba(244, 236, 220, 0.78);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    footer.site nav a:hover { color: var(--sea-pale); }
+    footer.site .bottom {
+      max-width: 1240px;
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244, 236, 220, 0.5);
+    }
+    footer.site .bottom .credit {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* ============================ Reveal ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero video { display: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ============================ Mobile ============================ */
+    @media (max-width: 920px) {
+      .topbar { padding: 18px 22px; }
+      .topbar .right span:not(.dot) { display: none; }
+      .hero-inner { padding: 0 24px clamp(40px, 8vh, 80px); }
+      .hero h1 { font-size: clamp(48px, 14vw, 80px); max-width: 14ch; }
+      .hero-row .right { text-align: left; }
+
+      .story { padding: 96px 24px 80px; }
+      .story .seal-inset { width: 88px; height: 88px; }
+
+      .image-band, .quiet { height: clamp(320px, 52vh, 480px); }
+      .image-band .caption { flex-direction: column; align-items: flex-start; padding: 0 24px 40px; }
+      .image-band .caption .credit { text-align: left; }
+
+      .quote { padding: 80px 24px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .services-list-col { padding: 80px 24px; }
+      .services-image-col { min-height: 420px; order: -1; }
+
+      .qa-wrap { padding: 0 24px; }
+      .qa-head { grid-template-columns: 1fr; gap: 24px; }
+      .qa-cols { column-count: 1; column-gap: 0; }
+
+      .careers { padding: 80px 24px; }
+      .careers-grid { grid-template-columns: 1fr; gap: 40px; }
+      .careers-roles { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
+      .careers-cta { flex-direction: column; align-items: flex-start; }
+      .careers-cta .aside { text-align: left; }
+
+      .invite-wrap { padding: 0 24px; }
+      .invite-top, .invite-card { grid-template-columns: 1fr; gap: 32px; }
+      .invite-top { padding-bottom: 48px; }
+      .invite-card { margin-top: 48px; }
+      .address-grid { grid-template-columns: 1fr; column-gap: 0; }
+
+      footer.site { padding: 48px 24px 24px; }
+      footer.site .wrap { flex-direction: column; align-items: flex-start; gap: 28px; }
+      footer.site .bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Splash page build in progress -->
+
+  <!-- ====================== TOPBAR ====================== -->
+  <header class="topbar">
+    <a class="seal" href="#top" aria-label="Bonnie Mara Animal Hospital">
+      <img src="assets/logo/logo-page-1.png" alt="Bonnie Mara Animal Hospital seal" />
+    </a>
+    <div class="right">
+      <span>Santa Barbara, CA</span>
+      <span class="dot" aria-hidden="true"></span>
+      <span>Opening Summer 2026</span>
+    </div>
+  </header>
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero" id="top">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/images/santa-barbara-sunrise.jpg" alt="" />
+      <video autoplay muted loop playsinline preload="auto" poster="assets/images/santa-barbara-sunrise.jpg">
+        <source src="assets/video/ocean-horizon.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <p class="lead-in">Bonnie Mara &mdash; beautiful ocean, in Scot&rsquo;s Gaelic</p>
+      <h1>A <span class="light">new kind of</span> animal hospital for Santa Barbara.</h1>
+      <div class="hero-row">
+        <p class="left">Independently owned, low&#8209;stress veterinary care for dogs and cats &mdash; opening this summer at 4860 Calle Real.</p>
+        <p class="right">
+          <span class="pin">&#9678;</span>4860 Calle Real<br/>
+          Santa Barbara, CA<br/>
+          Opening Summer 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== NAME STORY (V1 reverted — centered Putnam letter) ====================== -->
+  <section class="story" id="story">
+    <div class="seal-inset" aria-hidden="true">
+      <img src="assets/logo/logo-page-1.png" alt="" />
+    </div>
+
+    <p class="eyebrow">A note from Dr. Putnam</p>
+    <h2>Bonnie Mara, in <span class="light">two languages.</span></h2>
+
+    <div class="story-prose">
+      <p>I chose the name &ldquo;Bonnie Mara&rdquo; to reflect both my Scottish roots and the natural beauty of our surroundings here in Santa Barbara. &ldquo;Bonnie&rdquo; is what my granny called everything beautiful &mdash; the landscape, our family, a quiet morning.</p>
+      <p>&ldquo;Mara&rdquo; means sea, in Gaelic. It captures my deep connection to Santa Barbara, the beaches I&rsquo;ve walked with my dogs, and the calm that lives in the water. The ocean embodies peace and interconnectedness of all living beings &mdash; <em>values that deeply resonate with our mission.</em></p>
+    </div>
+
+    <p class="signature">Dr. Le Putnam</p>
+
+    <div class="signup" id="mailing-list">
+      <p class="label">Be the first to know when we open</p>
+      <form class="ml-form" onsubmit="event.preventDefault(); window.alert('Mailing list signup — pending JotForm wiring per DE Standard');">
+        <input type="email" placeholder="Your email address" aria-label="Email address" required />
+        <button type="submit">Notify me</button>
+      </form>
+      <p class="ml-foot">One email, when appointments open. That&rsquo;s it.</p>
+    </div>
+  </section>
+
+  <!-- ====================== IMAGE BAND — dog on beach (Santa Barbara mood) ====================== -->
+  <section class="image-band" aria-label="A dog at rest on the Santa Barbara coast">
+    <img src="assets/images/dog-beach.jpg" alt="A calm dog resting on sand at sunset along the California coast" />
+    <div class="caption">
+      <p class="line">The beaches I&rsquo;ve walked with my dogs &mdash; the calm that lives in the water.</p>
+      <p class="credit">Santa Barbara <span class="dot">&middot;</span> Pacific Coast</p>
+    </div>
+  </section>
+
+  <!-- ====================== BRICK QUOTE ====================== -->
+  <section class="quote" id="different" aria-label="What makes us different">
+    <div class="quote-inner">
+      <p class="quote-text">Proudly independently owned &mdash; <span class="light">with the time to focus on making each visit a positive one.</span></p>
+      <p class="quote-attr">Not one-size-fits-all</p>
+    </div>
+  </section>
+
+  <!-- ====================== SERVICES (split: typographic list + dog cuddle image) ====================== -->
+  <section class="services" id="services">
+    <div class="services-grid">
+      <div class="services-list-col">
+        <div class="services-head">
+          <p class="eyebrow">The practice</p>
+          <h2>Comprehensive care, <span class="light">quietly done.</span></h2>
+          <p class="lede">For dogs and cats &mdash; from first puppyhood and kittenhood through the senior years.</p>
+        </div>
+
+        <ol class="services-list">
+          <li class="service">
+            <span class="num">01</span>
+            <div>
+              <h3>Wellness</h3>
+              <p>Annual and semi&#8209;annual visits tailored to age, breed, and species. Good habits, vaccines, nutrition &mdash; in your time, on your pet&rsquo;s pace.</p>
+            </div>
+          </li>
+          <li class="service">
+            <span class="num">02</span>
+            <div>
+              <h3>Surgery</h3>
+              <p>Routine spays and neuters; complex soft tissue; emergency cases including GDV, splenectomy, bladder, pyometra, foxtails, and trauma surgery.</p>
+            </div>
+          </li>
+          <li class="service">
+            <span class="num">03</span>
+            <div>
+              <h3>Dentistry &amp; COHAT</h3>
+              <p>Complete oral health assessment and treatment under general anesthesia. Every procedure includes dental radiographs and a thorough oral exam.</p>
+            </div>
+          </li>
+          <li class="service">
+            <span class="num">04</span>
+            <div>
+              <h3>Diagnostics &amp; imaging</h3>
+              <p>Full in&#8209;house lab plus Idexx reference. ImageVue DR50 Plus digital x&#8209;ray. Abdominal and emergency ultrasound.</p>
+            </div>
+          </li>
+          <li class="service">
+            <span class="num">05</span>
+            <div>
+              <h3>Urgent &amp; same&#8209;day</h3>
+              <p>Vet visits are often unexpected. We&rsquo;ll do our best to accommodate you in your time of need &mdash; without sending you somewhere unfamiliar.</p>
+            </div>
+          </li>
+          <li class="service">
+            <span class="num">06</span>
+            <div>
+              <h3>End&#8209;of&#8209;life</h3>
+              <p>Hospice, palliative, and euthanasia services with dignity. On your pet&rsquo;s terms, in a space that feels right for your family.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="services-image-col" aria-hidden="true">
+        <img src="assets/images/owner-dog-cuddle.jpg" alt="A pet owner holding their dog in their arms at home, dog looking over the shoulder" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Q&A ====================== -->
+  <section class="qa" id="faqs">
+    <div class="qa-wrap">
+      <div class="qa-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>The most common <span class="light">questions, right now.</span></h2>
+      </div>
+
+      <div class="qa-cols">
+
+        <div class="qa-item">
+          <p class="qa-q">When will you be opening?</p>
+          <div class="qa-a">
+            <p>Summer 2026. The exact date is still to be determined. The interior construction is complete &mdash; we&rsquo;re in the process of permitting for roadwork to install a fire sprinkler, which is a lengthy process. We&rsquo;re almost there.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Where are you located?</p>
+          <div class="qa-a">
+            <p>4860 Calle Real, Santa Barbara, CA 93111. Directly across the street from In&#8209;N&#8209;Out Burger off the 101 Turnpike exit.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">What makes Bonnie Mara different?</p>
+          <div class="qa-a">
+            <p>Proudly independently owned. We have the time to focus on making each visit a positive one for your pet, spending time with you on individualized recommendations rather than a &ldquo;one-size-fits-all&rdquo; approach to care.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">What does Bonnie Mara mean?</p>
+          <div class="qa-a">
+            <p>&ldquo;Beautiful ocean,&rdquo; in Scot&rsquo;s Gaelic.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">What type of animals do you see?</p>
+          <div class="qa-a">
+            <p>Dogs and cats. We love meeting new puppies and kittens and setting them up for a lifetime of success &mdash; from puppyhood and kittenhood through their geriatric years.</p>
+            <p>In addition to preventative care, Dr. Putnam loves internal medicine, dermatology, urgent care, surgery and dentistry &mdash; as well as care focused on helping senior pets live to the full extent of their lives.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Are you accepting new patients?</p>
+          <div class="qa-a">
+            <p>Yes. <a href="#mailing-list">Join the mailing list</a> and we&rsquo;ll let you know the moment appointments open.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">After-hours emergency care or overnight boarding?</p>
+          <div class="qa-a">
+            <p>Unfortunately no &mdash; we&rsquo;re not zoned to be open 24 hours. Patients requiring overnight care will be referred to a 24&#8209;hour facility.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Pet grooming?</p>
+          <div class="qa-a">
+            <p>No. We&rsquo;re focusing on all aspects of veterinary care and will leave grooming to those who do it professionally.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">What will your hours be?</p>
+          <div class="qa-a">
+            <p>Monday through Friday, 8am&ndash;6pm. Appointments preferred.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Urgent or same-day appointments?</p>
+          <div class="qa-a">
+            <p>Yes. We know vet visits are often unexpected and will do our best to accommodate you during your time of need.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Is parking available?</p>
+          <div class="qa-a">
+            <p>Yes &mdash; we have plenty of parking.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Will you perform surgery?</p>
+          <div class="qa-a">
+            <p>Yes. Routine surgery (spays/neuters/laceration repairs/mass removals), plus complex soft tissue and emergency surgeries &mdash; including GDV, splenectomy, cesarean sections, bladder, pyometra, foxtail removals, abscess, and trauma surgery.</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Dental care?</p>
+          <div class="qa-a">
+            <p>Yes. COHAT procedures under general anesthesia, with dental radiographs and a complete oral exam in addition to cleaning and polishing. Comfortable with all extractions and advanced techniques (root planing, bonded sealants, guided tissue regeneration, oronasal fistula repair).</p>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Lab, x-ray, ultrasound?</p>
+          <div class="qa-a">
+            <p>Yes to all. Full in&#8209;house lab plus Idexx for comprehensive testing. ImageVue DR50 Plus digital x&#8209;ray. Abdominal and emergency ultrasound.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== QUIET CAT MOMENT ====================== -->
+  <section class="quiet" aria-label="A sleeping cat">
+    <img src="assets/images/cat-sleeping.jpg" alt="A peaceful tabby cat sleeping in soft natural light" />
+    <p class="label">Low-stress, by design</p>
+  </section>
+
+  <!-- ====================== CAREERS ====================== -->
+  <section class="careers" id="careers">
+    <div class="careers-wrap">
+      <div class="careers-top">
+        <span>Now hiring &middot; Summer 2026</span>
+        <span class="ed">A note from the founder</span>
+      </div>
+
+      <div class="careers-grid">
+        <div class="left">
+          <h2>Help us build the hospital we&rsquo;ve <span class="light">always wanted to work in.</span></h2>
+        </div>
+        <div class="right">
+          <p>At Bonnie Mara, we know how important each member of the veterinary team is &mdash; successful patient care requires a cohesive, collaborative unit. Veterinary medicine can be hard work, but working for a small, independent company that cares about each individual employee makes coming to work each day worth it.</p>
+          <p><em>Most importantly,</em> we know work isn&rsquo;t your whole life. We offer flexible scheduling so you aren&rsquo;t missing the important moments in life too.</p>
+        </div>
+      </div>
+
+      <div class="careers-roles">
+        <p class="role">Client Service Representatives <span class="ab">Full-time openings</span></p>
+        <p class="role">Registered Veterinary Technicians <span class="ab">RVT &middot; certified</span></p>
+        <p class="role">Veterinary Assistants <span class="ab">All experience levels</span></p>
+      </div>
+
+      <div class="careers-cta">
+        <a class="btn-apply" href="#" onclick="event.preventDefault(); window.alert('Apply link — pending Indeed URL from Dr. Putnam');">
+          Apply now
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M2 8h12M9 3l5 5-5 5"/>
+          </svg>
+        </a>
+        <p class="aside">Competitive wages, health, dental, vision, retirement, pet care benefits, paid time off, and a CE budget. All nights, weekends, and holidays off.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== INVITATION ====================== -->
+  <section class="invite" id="location">
+    <div class="invite-wrap">
+      <div class="invite-top">
+        <h2>Across from In&#8209;N&#8209;Out, <span class="light">off the 101.</span></h2>
+        <div class="right">
+          <p>A short walk from the beach, a short drive from anywhere in town. Plenty of parking. Easy in, easy out &mdash; designed to keep visits low-stress, starting at the curb.</p>
+        </div>
+      </div>
+
+      <div class="invite-card">
+        <div class="address">
+          <p class="line1">4860 Calle Real</p>
+          <p class="line2">Santa Barbara, California 93111</p>
+          <div class="address-grid">
+            <div>
+              <p class="k">Hours</p>
+              <p class="v">Monday &ndash; Friday<br/>8am &ndash; 6pm</p>
+            </div>
+            <div>
+              <p class="k">Opening</p>
+              <p class="v">Summer 2026<br/>Date to be announced</p>
+            </div>
+            <div>
+              <p class="k">Patients</p>
+              <p class="v">Dogs &amp; cats<br/>All ages, all stages</p>
+            </div>
+            <div>
+              <p class="k">Visits</p>
+              <p class="v">Appointments preferred<br/>Urgent / same-day available</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="closer-signup">
+          <p class="small">Final ask</p>
+          <h3>Join the list. We&rsquo;ll write to you <span class="light">once.</span></h3>
+          <form onsubmit="event.preventDefault(); window.alert('Mailing list signup — pending JotForm wiring per DE Standard');">
+            <input type="email" placeholder="Your email address" aria-label="Email address" required />
+            <button type="submit">Notify me</button>
+          </form>
+          <p class="fine">No marketing, no list-sharing. Just one email when appointments open.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="brand">
+        <div class="seal"><img src="assets/logo/logo-page-1.png" alt="Bonnie Mara Animal Hospital" /></div>
+        <div>
+          <div class="name">Bonnie Mara Animal Hospital</div>
+          <div class="tag">&ldquo;beautiful ocean&rdquo; &middot; Scot&rsquo;s Gaelic</div>
+        </div>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#story">The name</a>
+        <a href="#services">Services</a>
+        <a href="#faqs">FAQ</a>
+        <a href="#careers">Careers</a>
+        <a href="#mailing-list">Mailing list</a>
+      </nav>
+    </div>
+    <div class="bottom">
+      <span>&copy; 2026 Bonnie Mara Animal Hospital &middot; Santa Barbara, CA</span>
+      <span class="credit">Designed by Digital Empathy</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const targets = document.querySelectorAll(
+        '.story > *, .image-band .caption > *, .quote-inner > *, .services-head, .service, .services-image-col, .qa-head, .qa-item, .quiet .label, .careers-top, .careers-grid, .careers-roles, .careers-cta, .invite-top, .invite-card > *, footer.site .wrap, footer.site .bottom'
+      );
+      targets.forEach(el => el.classList.add('reveal'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(el => io.observe(el));
+    })();
+  </script>
+
 </body>
 </html>

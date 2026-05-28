@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style B — Ocean Horizon · Bonnie Mara Animal Hospital</title>
+  <meta name="description" content="Opening Summer 2026 in Santa Barbara. Bonnie Mara means beautiful ocean in Gaelic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #3D5A7A;
+      --ink-deep: #2A4360;
+      --sea: #A3BBD2;
+      --sea-pale: #C9D8E6;
+      --cream: #F4ECDC;
+      --cream-deep: #ECE0CB;
+      --brick: #B86E4A;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink-deep);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Top bar --- */
+    .topbar {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 48px;
+      z-index: 10;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+    }
+    .topbar .seal {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      overflow: hidden;
+    }
+    .topbar .seal img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .topbar .right { display: flex; align-items: center; gap: 24px; }
+    .topbar .dot { width: 5px; height: 5px; background: var(--cream); border-radius: 50%; }
+
+    /* --- Hero: sea on top, paper below --- */
+    .hero {
+      position: relative;
+      height: 92vh;
+      min-height: 720px;
+      background: var(--ink);
+      color: var(--cream);
+      overflow: hidden;
+    }
+    /* Solid color "sea" with subtle horizontal stripe to imply horizon — no gradients */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 6px, rgba(0,0,0,0.04) 6px 7px);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 38%;
+      background: var(--ink-deep);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 200px 48px 0;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--sea-pale);
+      margin: 0 0 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero .eyebrow::before,
+    .hero .eyebrow::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--sea-pale);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(64px, 9vw, 144px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 28px;
+      color: #FFFFFF;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sea-pale);
+    }
+    .hero .gaelic {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2.2vw, 28px);
+      color: var(--sea-pale);
+      max-width: 580px;
+      margin: 0 auto 48px;
+      line-height: 1.4;
+    }
+    .hero .meta {
+      display: inline-flex;
+      gap: 16px;
+      align-items: center;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      padding: 14px 24px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+    .hero .meta .pip {
+      width: 7px; height: 7px; background: var(--brick); border-radius: 50%;
+    }
+
+    /* --- Cream paper beneath the sea --- */
+    .paper {
+      position: relative;
+      background: var(--cream);
+      padding: 96px 48px 80px;
+      text-align: center;
+    }
+    /* Brick "tide line" between sea and paper */
+    .paper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 96px; height: 96px;
+      background: var(--cream);
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px var(--brick);
+    }
+    .paper .seal-inset {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .paper .seal-inset img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    .paper .intro {
+      max-width: 700px;
+      margin: 32px auto 56px;
+    }
+    .paper .small {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin: 0 0 24px;
+    }
+    .paper h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.2;
+      color: var(--ink-deep);
+      margin: 0 0 24px;
+    }
+    .paper .body {
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    /* --- Mailing list --- */
+    .signup {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .signup .label {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .ml-form {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--ink-deep);
+      background: #FFFCF5;
+    }
+    .ml-form input {
+      flex: 1;
+      padding: 18px 20px;
+      border: 0;
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink-deep);
+      outline: none;
+    }
+    .ml-form input::placeholder { color: #9AA5B4; font-style: italic; }
+    .ml-form button {
+      padding: 18px 28px;
+      background: var(--ink-deep);
+      color: var(--cream);
+      border: 0;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .ml-form button:hover { background: var(--brick); }
+
+    .signup .ml-foot {
+      font-size: 12px;
+      color: #7A8696;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .topbar { padding: 20px 24px; }
+      .topbar .right span:not(.dot) { display: none; }
+      .hero { height: auto; min-height: 100vh; }
+      .hero-inner { padding: 160px 24px 0; }
+      .paper { padding: 80px 24px 64px; }
+      .paper::before, .paper .seal-inset { width: 72px; height: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="seal">
+      <img src="../assets/logo/logo-page-1.png" alt="Bonnie Mara Animal Hospital seal" />
+    </div>
+    <div class="right">
+      <span>Santa Barbara, CA</span>
+      <span class="dot"></span>
+      <span>Opening Summer 2026</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Bonnie Mara</p>
+      <h1>beautiful<br/><em>ocean.</em></h1>
+      <p class="gaelic">A name in Scot&rsquo;s Gaelic. A new hospital for dogs and cats in Santa Barbara, opening this summer.</p>
+      <p class="meta">
+        <span class="pip"></span>
+        <span>4860 Calle Real &middot; Santa Barbara</span>
+        <span class="pip"></span>
+        <span>Summer 2026</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="paper">
+    <div class="seal-inset">
+      <img src="../assets/logo/logo-page-1.png" alt="Bonnie Mara seal" />
+    </div>
+
+    <div class="intro">
+      <p class="small">A note from Dr. Putnam</p>
+      <h2>I&rsquo;m building the hospital I always wanted to work in.</h2>
+      <p class="body">Independently owned. Low&#8209;stress by design. The time to focus on each visit, each pet, and each family &mdash; not a one&#8209;size&#8209;fits&#8209;all approach to care.</p>
+    </div>
+
+    <div class="signup">
+      <p class="label">Be the first to know when we open</p>
+      <form class="ml-form" onsubmit="event.preventDefault(); alert('Mailing list signup placeholder — wire to JotForm');">
+        <input type="email" placeholder="Your email address" aria-label="Email address" required />
+        <button type="submit">Notify me</button>
+      </form>
+      <p class="ml-foot">One email, when appointments open. That&rsquo;s it.</p>
+    </div>
+  </section>
+
+</body>
+</html>
