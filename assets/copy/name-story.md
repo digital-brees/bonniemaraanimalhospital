@@ -1,4 +1,4 @@
-# Bonnie Mara — The Name (verbatim, Dr. Le Putnam)
+# Bonnie Mara — The Name (verbatim, Dr. Laura Putnam)
 
 > Source: `Bonnie Mara Animal Hospital name.pdf` in Drive `Bios/` folder.
 > Use word-for-word. Do not paraphrase.
