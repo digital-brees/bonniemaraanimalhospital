@@ -424,7 +424,7 @@
       font-family: var(--display);
       font-weight: 400;
       color: #FFFFFF;
-      margin: 0 auto;
+      margin: 0;
       max-width: 34ch;
       text-align: left;
       text-shadow: 0 2px 28px rgba(20, 36, 56, 0.55);
