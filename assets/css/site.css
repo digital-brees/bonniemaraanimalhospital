@@ -423,18 +423,31 @@
     .quote-text {
       font-family: var(--display);
       font-weight: 400;
-      font-size: clamp(32px, 4.4vw, 60px);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
       color: #FFFFFF;
-      margin: 0 auto 40px;
-      max-width: 22ch;
+      margin: 0 auto;
+      max-width: 34ch;
+      text-align: left;
       text-shadow: 0 2px 28px rgba(20, 36, 56, 0.55);
     }
+    .quote-text .lead {
+      display: block;
+      font-weight: 600;
+      font-size: clamp(40px, 6vw, 84px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      max-width: 14ch;
+      margin: 0;
+    }
     .quote-text .light {
+      display: block;
       font-weight: 300;
+      font-size: clamp(20px, 2.4vw, 32px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
       color: var(--sea-pale);
       font-style: italic;
+      max-width: 34ch;
+      margin: 0.6em 0 0;
     }
     .quote-attr {
       font-family: var(--sans);
