@@ -113,6 +113,16 @@ Both `index.html` + `careers.html` now have full launch-grade head metadata:
 
 ---
 
+## Responsiveness audit (DONE this session)
+
+Rendered both pages via Playwright at 375 / 768 / 1440 with measured horizontal-overflow checks.
+- **Layout is solid:** all multi-column grids (services, qa-list, careers-grid/apply/form, invite-card, address-grid) collapse to 1col at the single `max-width: 920px` breakpoint; header nav + "Opening" lockup hide correctly; mostly `clamp()`-fluid type.
+- **Bug found + fixed:** footer `<nav>` (5 uppercase links, `display:flex`, no wrap) overflowed the viewport by **42px at 375px** on BOTH pages → horizontal scroll. Fix: added `footer.site nav { flex-wrap: wrap; gap: 14px 22px; }` to the 920px block. Now wraps to two rows ("The Name · Services · FAQ · Careers" / "Mailing List").
+- **Re-verified:** overflowX = 0 at 375/768/1440 on both pages after the fix. Header + footer clips confirmed visually.
+- Note: site uses ONE breakpoint (920px). It holds up, but if future polish is wanted, a ≤480px tier could tighten hero/footer spacing further. Not blocking.
+
+---
+
 ## Outstanding / pending
 
 - **Phone number** for pre-opening (not in FAQs doc). Also feeds JSON-LD `telephone`.
