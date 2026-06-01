@@ -128,6 +128,18 @@ Rendered both pages via Playwright at 375 / 768 / 1440 with measured horizontal-
 
 ---
 
+## Accessibility / a11y pass (DONE this session)
+
+Ran axe-core (wcag2a + wcag2aa + best-practice, injected via CDN through Playwright) + custom DOM checks on both pages.
+- **Already passing:** valid `<title>` + meta description, `lang="en"`, exactly one `<h1>`/page, logical heading order, every `<img>` has alt, every input is labeled, no empty links/buttons, CTA buttons meet tap-target size.
+- **Fixed — color contrast (was 3 serious violations):** footer `.bottom` copyright + `.credit` ("Designed by Digital Empathy") were `rgba(201,216,230,0.55)` on navy = 3.94:1 → bumped to `0.8`. Closer-signup `.fine` was `rgba(244,236,220,0.6)` on ink-deep = 4.22:1 → bumped to `0.82`. Both now ≥4.5:1.
+- **Fixed — landmarks (region + landmark-one-main):** wrapped primary content in `<main>` on both pages.
+  - **index.html GOTCHA:** the footer lived INSIDE `.scroll-over` (needed so it paints above the `z-index:0` sticky "tide" hero). Couldn't wrap `<main>` cleanly because `.scroll-over` crossed the footer boundary. Fix: closed `.scroll-over` + `</main>` BEFORE the footer, made footer a body-level sibling (so it's a proper `contentinfo` landmark), and added `footer.site { position: relative; z-index: 1; }` so it still layers above the hero. Verified: hero still `position:sticky`, footer renders on top (elementFromPoint at footer center is inside footer, not hero), tide effect intact.
+- **Result: 0 axe violations on both pages.** Tag balance verified (1 `<main>` open/close each).
+- Note: axe flags inline nav/footer text links as <40px tall (18px) — normal/acceptable for inline text links, not fixed. Smallest UI text is 10px (eyebrows/footer labels) — passes contrast, but tiny; left as-is per design.
+
+---
+
 ## Outstanding / pending
 
 - **Phone number** for pre-opening (not in FAQs doc). Also feeds JSON-LD `telephone`.
