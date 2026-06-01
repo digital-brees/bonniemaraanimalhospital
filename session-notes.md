@@ -119,7 +119,12 @@ Rendered both pages via Playwright at 375 / 768 / 1440 with measured horizontal-
 - **Layout is solid:** all multi-column grids (services, qa-list, careers-grid/apply/form, invite-card, address-grid) collapse to 1col at the single `max-width: 920px` breakpoint; header nav + "Opening" lockup hide correctly; mostly `clamp()`-fluid type.
 - **Bug found + fixed:** footer `<nav>` (5 uppercase links, `display:flex`, no wrap) overflowed the viewport by **42px at 375px** on BOTH pages → horizontal scroll. Fix: added `footer.site nav { flex-wrap: wrap; gap: 14px 22px; }` to the 920px block. Now wraps to two rows ("The Name · Services · FAQ · Careers" / "Mailing List").
 - **Re-verified:** overflowX = 0 at 375/768/1440 on both pages after the fix. Header + footer clips confirmed visually.
-- Note: site uses ONE breakpoint (920px). It holds up, but if future polish is wanted, a ≤480px tier could tighten hero/footer spacing further. Not blocking.
+- **Second pass — small phones (≤400px):** re-audited at 320/375/414/768/1024. Found two more breaks at 320px:
+  1. `.ml-form` (name-story signup) is inline input+button with `overflow:hidden` → the submit button got clipped off the right edge below ~400px (unusable).
+  2. `.careers-roles .role` is a space-between flex with a `white-space:nowrap` `.ab` badge → badges ("FULL-TIME OPENINGS" etc.) ran off the right edge at 320 (50px overflow).
+  - Fix: added a `@media (max-width: 400px)` block — `.ml-form` stacks (input over full-width button + divider border); `.careers-roles .role` stacks title over badge (`flex-direction: column`, `.ab` white-space normal). Verified visually + overflowX=0 (320 has a cosmetic 1px sub-pixel rounding in the address/closer block — no visible scroll).
+  - Note: the closer-signup form (contact dark card) was already `flex-direction: column`, so no change there.
+- Site now has TWO breakpoints: 920px (layout collapse) + 400px (small-phone inline-pair stacking). Clean across 320→1440.
 
 ---
 

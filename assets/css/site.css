@@ -1203,6 +1203,24 @@
       footer.site nav { flex-wrap: wrap; gap: 14px 22px; }
       footer.site .bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
+
+    /* ===== Small phones (<=400px): stack inline pairs that crowd ===== */
+    @media (max-width: 400px) {
+      /* Mailing-list signup: stack email input above a full-width button
+         (was inline; the button got clipped by .ml-form overflow:hidden) */
+      .ml-form { flex-direction: column; }
+      .ml-form input { width: 100%; }
+      .ml-form button {
+        width: 100%;
+        padding: 16px 22px;
+        border-top: 1px solid var(--ink-deep);
+      }
+
+      /* Careers role rows: stack the title above its badge so the
+         nowrap badge stops running off the right edge */
+      .careers-roles .role { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .careers-roles .role .ab { white-space: normal; }
+    }
 /* ===== Dedicated careers page (careers.html) ===== */
 .careers.is-page { padding-top: clamp(80px, 12vh, 130px); }
 .careers.is-page .careers-grid h2 { font-size: clamp(38px, 5vw, 68px); }
