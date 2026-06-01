@@ -96,19 +96,37 @@ Wired via hidden-iframe POST (`<iframe name="jotform-submit">` near `</body>`); 
 
 ---
 
+## SEO / metadata (DONE this session — launch-ready)
+
+Both `index.html` + `careers.html` now have full launch-grade head metadata:
+- **Canonical** URLs (`https://bonniemaraah.com/` and `/careers.html`).
+- **Open Graph** (type, site_name, title, description, url, locale, image + width/height/alt) and **Twitter Card** (`summary_large_image`).
+- **Favicon links** — `/favicon.ico`, 16/32px PNGs, apple-touch-icon.
+- `index.html` only: **JSON-LD `VeterinaryCare`** structured data — name, url, founder (Dr. Putnam), full postal address, areaServed, Mon–Fri 08:00–18:00 hours. (No `telephone` yet — add when phone is known.)
+
+**Assets generated from the logo** via `make_seo_assets.py` (kept in repo root; re-run if logo changes):
+- `assets/images/og-bmah.jpg` — branded 1200×630 share card (navy gradient + circle-masked seal + "OPENING SUMMER 2026"). Built with Inter (no Outfit TTF on machine; Inter is the brand body font). Used as og/twitter image on BOTH pages.
+- `favicon.ico` (16/32/48 multi-res) + `assets/images/favicon-{16,32,48,180,192,512}.png` + `apple-touch-icon.png` (cream bg). All circle-masked with transparent corners; logo autocropped from its white padding via ImageChops bbox.
+- `sitemap.xml` (home priority 1.0 + careers 0.8); `Sitemap:` line added to `robots.production.txt`.
+
+**Still TODO for SEO at launch:** add `telephone` to JSON-LD once phone exists; the real `sitemap.xml` is in place (no longer "pending"). Consider a tighter favicon glyph if 16px legibility matters (current seal is detailed but reads as navy ring + cat/dog).
+
+---
+
 ## Outstanding / pending
 
-- **Phone number** for pre-opening (not in FAQs doc).
+- **Phone number** for pre-opening (not in FAQs doc). Also feeds JSON-LD `telephone`.
 - **Real BMAH photos** — swap placeholders (hero videos, services image, careers image, hiring-teaser) for real interior/exterior/team photos when available (Drive folder still empty).
 - **Hiring-teaser image** (`hiring-teaser.jpg`) shows an identifiable person in scrubs in a clinic — bumps the "no staff faces in clinic settings" media guideline. Brees chose it explicitly for the careers band; flagged for her final call.
 - JotForm manual dashboard steps (above).
-- Favicon set, OG share image, Schema.org VeterinaryCare data.
-- **Launch:** swap `robots.txt` ← `robots.production.txt`; confirm Vercel + production domain; real sitemap.
+- ~~Favicon set, OG share image, Schema.org VeterinaryCare data.~~ ✅ DONE (see SEO section above).
+- **Launch:** swap `robots.txt` ← `robots.production.txt` (now includes Sitemap line); confirm Vercel + production domain; sitemap.xml live.
 
 ---
 
 ## Asset inventory (after cleanup)
 
-`assets/images/`: brick-wall.jpg · careers-hero-poster.jpg · careers.jpg · dog-cat-sleeping.jpg · hero-bmah-poster.jpg · hiring-teaser.jpg · `logo/logo-page-1.png`
+`assets/images/`: brick-wall.jpg · careers-hero-poster.jpg · careers.jpg · dog-cat-sleeping.jpg · hero-bmah-poster.jpg · hiring-teaser.jpg · og-bmah.jpg · apple-touch-icon.png · favicon-{16,32,48,180,192,512}.png · `logo/logo-page-1.png`
 `assets/video/`: careers-hero.mp4 · hero-bmah.mp4
+Root: `favicon.ico` · `sitemap.xml` · `make_seo_assets.py` (asset generator)
 (Orphans removed this session: dog-beach, cat-sleeping, owner-dog-cuddle, careers-hero.jpg still, santa-barbara-sunrise, ocean-horizon.mp4)
