@@ -967,9 +967,44 @@
       font-weight: 300;
       font-size: clamp(20px, 1.8vw, 26px);
       color: var(--ink);
-      margin: 0 0 36px;
+      margin: 0 0 14px;
       letter-spacing: -0.015em;
       font-style: italic;
+    }
+    /* Address → Google Maps directions link (contact card) */
+    .address .addr-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      margin: 0 0 36px;
+    }
+    .address .addr-link .line2 { margin-bottom: 14px; }
+    .address .addr-link .directions {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color .2s ease, transform .2s ease;
+    }
+    .address .addr-link:hover .line1,
+    .address .addr-link:focus-visible .line1 { color: var(--ink); }
+    .address .addr-link:hover .directions,
+    .address .addr-link:focus-visible .directions { color: var(--ink-deep); }
+    /* Address → Google Maps directions link (hero) */
+    .hero-row .right .addr-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(255, 255, 255, 0.35);
+      transition: text-decoration-color .2s ease, color .2s ease;
+    }
+    .hero-row .right .addr-link:hover,
+    .hero-row .right .addr-link:focus-visible {
+      color: var(--sea-pale);
+      text-decoration-color: var(--sea-pale);
     }
     .address-grid {
       display: grid;
@@ -1142,6 +1177,18 @@
       font-size: 13px;
       letter-spacing: 0;
       text-transform: none;
+    }
+    footer.site .bottom .credit a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(201, 216, 230, 0.4);
+      transition: color .2s ease, text-decoration-color .2s ease;
+    }
+    footer.site .bottom .credit a:hover {
+      color: var(--sea-pale);
+      text-decoration-color: var(--sea-pale);
     }
 
     /* ============================ Reveal ============================ */

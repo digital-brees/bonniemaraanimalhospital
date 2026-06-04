@@ -10,6 +10,10 @@
 
 **Status:** Pre-launch splash + dedicated careers page. Actively iterating with Brees. Last big pass: emotional careers page (video hero), site-wide border-radius, blue→cream gradients, JotForm wiring.
 
+**Latest edits (2026-06-04):**
+- Footer credit "Designed by Digital Empathy" now links to `https://digitalempathyinc.com` (new tab) on BOTH index.html + careers.html. Styled `.bottom .credit a` in site.css (inherits italic credit, subtle underline → sea-pale on hover).
+- Both addresses in index.html now hyperlink to Google Maps **directions** (`maps/dir/?api=1&destination=4860+Calle+Real...`), new tab, with aria-labels. Hero `.right` address = underlined link; "Visit us" contact card `.address` = clickable block with a "Get directions →" affordance. Styled `.address .addr-link` + `.hero-row .right .addr-link` in site.css. careers.html has no visible address (unchanged).
+
 ---
 
 ## Architecture (IMPORTANT — read before editing)
