@@ -25,7 +25,8 @@
 
 **Preview:** `python -m http.server 8767` from project root → http://127.0.0.1:8767/ and /careers.html
 **Standalone git repo** (own `.git`). GitHub: `digital-brees/bonniemaraanimalhospital`.
-**Vercel: LIVE (first deploy 2026-06-04).** Project `brees-projects-61eb3847/bonniemaraanimalhospital`, scope `brees-projects-61eb3847`, GitHub repo connected (git push auto-deploys). Static site, no build (output `.`). Prod URL: `https://bonniemaraanimalhospital-6f1t91kj9-brees-projects-61eb3847.vercel.app` (project alias: `bonniemaraanimalhospital.vercel.app`). Custom domain `bonniemaraah.com` NOT yet attached. `.vercel/` is local + gitignored. Manual deploy: `vercel deploy --prod --yes --scope brees-projects-61eb3847` from project root.
+**Vercel: ALREADY LIVE — auto-deploys from GitHub.** The production site is `https://www.bonniemaraah.com` (apex `bonniemaraah.com` 307-redirects to www), served by Vercel and connected to the GitHub repo. **`git push` to `main` = auto-deploy to production.** (Verified 2026-06-04: pushing the DE-footer-link + Google-Maps-address edits made them live on www.bonniemaraah.com automatically.) The hosting Vercel project lives under a DIFFERENT account/team — NOT `brees-projects-61eb3847` (that scope shows no projects). Do not assume a manual import is needed; the prior "pending first manual import" note was WRONG.
+  - **2026-06-04 cleanup note:** Mistakenly created a DUPLICATE Vercel project `bonniemaraanimalhospital` under scope `brees-projects-61eb3847` and connected the GitHub repo to it. It serves a throwaway `...vercel.app` URL, NOT the real domain. Local `.vercel/` link removed. **TODO: delete that duplicate project** (Vercel dashboard → brees-projects-61eb3847 → bonniemaraanimalhospital → Settings → Delete, or `vercel project rm bonniemaraanimalhospital --scope brees-projects-61eb3847 --yes`) and disconnect its git integration so pushes don't double-deploy.
 
 ---
 
