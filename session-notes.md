@@ -24,7 +24,8 @@
 - `assets/css/site.css` — **shared stylesheet, linked by both pages.** Was inline `<style>`; extracted this session. **Gotcha:** `url()` paths inside site.css are relative to the CSS file, so they use `../images/...` (NOT `assets/images/...`). The brick + hiring-teaser backgrounds rely on this.
 
 **Preview:** `python -m http.server 8767` from project root → http://127.0.0.1:8767/ and /careers.html
-**Standalone git repo** (own `.git`). GitHub: `digital-brees/bonniemaraanimalhospital`. Vercel: pending first manual import.
+**Standalone git repo** (own `.git`). GitHub: `digital-brees/bonniemaraanimalhospital`.
+**Vercel: LIVE (first deploy 2026-06-04).** Project `brees-projects-61eb3847/bonniemaraanimalhospital`, scope `brees-projects-61eb3847`, GitHub repo connected (git push auto-deploys). Static site, no build (output `.`). Prod URL: `https://bonniemaraanimalhospital-6f1t91kj9-brees-projects-61eb3847.vercel.app` (project alias: `bonniemaraanimalhospital.vercel.app`). Custom domain `bonniemaraah.com` NOT yet attached. `.vercel/` is local + gitignored. Manual deploy: `vercel deploy --prod --yes --scope brees-projects-61eb3847` from project root.
 
 ---
 
