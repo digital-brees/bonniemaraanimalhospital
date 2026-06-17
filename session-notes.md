@@ -25,8 +25,17 @@
 
 **Preview:** `python -m http.server 8767` from project root → http://127.0.0.1:8767/ and /careers.html
 **Standalone git repo** (own `.git`). GitHub: `digital-brees/bonniemaraanimalhospital`.
+
+### Branch + preview workflow (set up & verified 2026-06-17) — BUILD NEW PAGES HERE
+- **Branches:** `main` = production (auto-deploys live). **`staging` = background build branch.** Build all new/in-progress pages on `staging`; never commit WIP to `main`.
+- **Promote when ready:** merge `staging → main` (PR or direct) — that merge is the ONLY thing that puts work on the live site.
+- **Preview deployments (EMPIRICALLY VERIFIED):** pushing `staging` triggers a Vercel **Preview** deployment (GitHub deployment env = "Preview", NOT Production). A canary push left `www.bonniemaraah.com` byte-identical (md5 unchanged before/after) — production is fully isolated. ✓
+- **Which project builds previews:** `bonniemara` under team `brees-projects-61eb3847` ("Digital Empathy - Brees"). Per-branch preview URL: `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`.
+  - ⚠️ **Preview Deployment Protection is ON** — that URL returns 401 + `_vercel_sso_nonce` to anonymous/curl requests. **To view: open it in a browser while logged into Vercel** as a member of the `brees-projects-61eb3847` team (SSO passes). Previews are `X-Robots-Tag: noindex` (won't get indexed). Preview URL also reachable via the Vercel status link on each pushed commit in GitHub.
+  - CLI quirk: `vercel project ls` shows "No projects found" under this team even though deployments land in `brees-projects-61eb3847/bonniemara` — likely a CLI token/scope mismatch; the git-integration pipeline works regardless. The browser dashboard is the reliable way in.
+- **Topology note:** the repo is connected to (at least) TWO Vercel projects that both build `main`: the real-domain project (under a DIFFERENT account Brees's CLI can't see — owns `bonniemaraah.com`) AND `bonniemara` (Brees's team, builds main to its own *.vercel.app, no custom domain). Merging to main rebuilds both; only the real-domain project goes live. The `bonniemara` main build is a harmless shadow.
 **Vercel: ALREADY LIVE — auto-deploys from GitHub.** The production site is `https://www.bonniemaraah.com` (apex `bonniemaraah.com` 307-redirects to www), served by Vercel and connected to the GitHub repo. **`git push` to `main` = auto-deploy to production.** (Verified 2026-06-04: pushing the DE-footer-link + Google-Maps-address edits made them live on www.bonniemaraah.com automatically.) The hosting Vercel project lives under a DIFFERENT account/team — NOT `brees-projects-61eb3847` (that scope shows no projects). Do not assume a manual import is needed; the prior "pending first manual import" note was WRONG.
-  - **2026-06-04 cleanup note:** Mistakenly created a DUPLICATE Vercel project `bonniemaraanimalhospital` under scope `brees-projects-61eb3847` and connected the GitHub repo to it. It serves a throwaway `...vercel.app` URL, NOT the real domain. Local `.vercel/` link removed. **TODO: delete that duplicate project** (Vercel dashboard → brees-projects-61eb3847 → bonniemaraanimalhospital → Settings → Delete, or `vercel project rm bonniemaraanimalhospital --scope brees-projects-61eb3847 --yes`) and disconnect its git integration so pushes don't double-deploy.
+  - **2026-06-04 cleanup note (RESOLVED 2026-06-17):** Mistakenly created a DUPLICATE Vercel project `bonniemaraanimalhospital` under scope `brees-projects-61eb3847`. **Verified 2026-06-17 it is GONE and never threatened the live site:** `vercel project ls` → "No projects found", `vercel project inspect bonniemaraanimalhospital` → "There is no project". The duplicate also never owned the domain — `vercel domains inspect bonniemaraah.com` returns "You don't have access to the domain ... under brees-projects-61eb3847", confirming the real hosting project (which owns the domain) lives under a DIFFERENT account/team. Live `www.bonniemaraah.com` serves 200 OK from that other project; apex 307→www. No action needed.
 
 ---
 
@@ -69,19 +78,86 @@
 
 ---
 
+## `contact.html` — dedicated contact page (built 2026-06-17, on `staging`)
+
+**IMPORTANT framing decision (Brees, 2026-06-17):** the `staging` branch is the FULL "we're open" site, NOT a pre-launch splash. New pages should read as if the practice is open — no "coming soon." (Exception she chose: KEEP "Opening Summer 2026" in the header lockup + footer "for now.")
+- Built from the careers.html template (same header/logo/nav/footer chrome). Nav order: Home · Services · FAQ · Careers · **Contact** (current). Contact link added to nav + footer on index.html + careers.html too.
+- **Hero** — reuses `.careers-hero` markup with a static poster only (no video): `hero-bmah-poster.jpg` (beach/dog) + scrim. Eyebrow "Get in touch", h1 "We can't wait to *meet you.*" (verbatim from splash invite).
+- **Visit-us card** (`.invite.is-page`, balanced 1fr/1fr) — left: clickable address → Google Maps directions + 4-cell info grid **Hours / Phone (805-819-7333, "Call or text") / Patients / Visits** (the old "Opening — date TBD" cell was replaced by Phone to read open). Right: **"Send us a message."** form card (`.contact-form-col`, white paper card) → JotForm `261675891444165`.
+- **Google Map** — embedded `<iframe>` via keyless `maps.google.com/maps?q=...&output=embed`, full-width below the card, rounded (`--radius-lg`), lazy-loaded, titled for a11y.
+- New CSS lives in site.css: `.contact-map`, `.invite.is-page` overrides, `.contact-form-col`/`.contact-form`, `.address .tel-link`; `.closer-signup h2` added alongside `h3`. Breakpoints: card stacks at 920px, inner form stacks at 540px. Verified: heading order h1→h2, all inputs labeled, mobile overflow 0 at 375.
+
+**⚠️ Phone note:** 805-819-7333 is a **texting number Brees gave**; she's unsure if it's also the main voice line. Shown as "Call or text" and deliberately NOT added to JSON-LD `telephone` yet. Confirm before treating as the primary number.
+
+---
+
+## `wellness.html` — first service page (built 2026-06-17, on `staging`)
+
+**Service-page template established here** — reusable pattern for the other service pages.
+- Same chrome (header/logo/nav/footer). Nav join button → "Contact us" (→contact.html) on service pages. **Added a skip link + `<main id="main" tabindex="-1">`** and a **global `:focus-visible` ring** to site.css (a11y baseline — retrofit other pages later).
+- **Hero** — reuses `.careers-hero` static-poster pattern (`.service-hero` adds shorter min-height). Image: `dog-cat-sleeping.jpg` (placeholder, swap for real). Eyebrow "Preventive Care", h1 "Wellness & *preventive care.*"
+- **Intro** lead (verbatim opening paragraph), then **`.svc-section`** of repeating **`.svc-block`s** — grid `0.7fr 1.5fr`, left `.svc-head` (number + h2) is **sticky** on desktop, right `.svc-body`. Blocks: 01 Wellness visits, 02 Physical exams, 03 Vaccinations, 04 Parasite prevention, 05 Wellness diagnostics.
+- **Vaccinations** → intro + two `.vax-card`s (Canine / Feline lists) + `.svc-note` titers callout (mist, sea left-border). **Parasite prevention / Wellness diagnostics** → `.svc-list` two-col check lists.
+- **CTA band** (`.svc-cta`, navy) reuses approved "We can't wait to *meet you.*" → Contact us button.
+- New CSS appended to site.css (skip-link, focus ring, `.svc-*`, `.vax-*`). Verified: heading order h1→h2→h3 valid, skip link + #main present, mobile overflow 0 at 375 (re-checked after a stale-tab false alarm — 8767 confirmed serving BMAH).
+- Copy saved verbatim at `assets/copy/wellness-care.md`.
+
+**⚠️ Wellness copy — sections to confirm before publish** (per the doc's own "include only what applies" instruction; flagged to Brees): Lyme vaccine (uncommon in S. CA), Rattlesnake toxoid, Canine influenza, and Blood cancer screening/liquid biopsy. Built with the FULL template; trim to BMAH's actual offerings.
+
+**Wellness page v2 (2026-06-17, Brees feedback):**
+- **Hero is now a VIDEO** (reuses `careers-hero.mp4` + `careers-hero-poster.jpg` as a placeholder — exam-room footage fits wellness). ⚠️ Site disables autoplay hero video under `prefers-reduced-motion` (a11y) and **Brees runs Reduce Motion ON, so she sees the poster, not motion** — normal visitors see the video. Told her to toggle Reduce Motion off to preview. Needs a wellness-specific clip eventually.
+- **Layout (FINAL, Brees-approved via preview pick) = clean stacked list + small thumbnail** (`.svc-items` > `.svc-item` = grid `[thumb | main]`; main = num + h2 + `.svc-body`). Small square `.svc-thumb` (sticky `top:104px`) left of each section; number eyebrow + title + full verbatim body (incl. vax cards + lists) on the right; hairline dividers between; several services visible at once. Mobile (<=920): single column (thumb 72px above text), vax-grid stacks. Verified: 5 items, desktop + mobile overflow 0.
+  - **Layout iteration history (so we don't loop):** v1 text-only clean stacked (she liked polish, wanted images) → v2 full-height sticky-media-swap (one image swaps per section; "this is good" but wanted to see >1 service) → v3 alternating image+text rows ("No I don't like this") → **v4 clean list + small thumbnail = the keeper.**
+  - **Dead CSS left in site.css (harmless, can delete):** `.svc-scroller/.svc-media/.svc-media-img` (v2), `.svc-content .svc-block`/`.svc-block-img` (v2), `.svc-rows/.svc-row/.svc-row-media/.svc-row-text/.svc-row-wide` (v3). The media-swap IntersectionObserver in site.js no-ops (no `.svc-media` in DOM).
+- ⚠️ **All 5 thumbnails are branded `placehold.co` placeholders** (navy squares labeled 01–05; the number also shows as an eyebrow, so real photos remove the apparent dup). Swap for real wellness photos — or pull licensed Shutterstock if Brees asks (per CLAUDE.md, placeholders by default).
+
+**Page not yet linked in nav top-level** — reachable via the new Services dropdown (see nav v2 below).
+
+---
+
+## Nav v2 — sitewide header/footer rebuild (2026-06-17)
+
+Per Brees: **Home · Team · Services ▾ · Client Corner ▾** + Request-an-appointment button. Applied to ALL pages (index, careers, contact, wellness).
+- **Shared `assets/js/site.js`** (loaded `defer` on every page) now owns: sticky header, desktop dropdowns (click/keyboard toggle + `aria-expanded`; CSS `:hover` reveal on desktop pointers — the two were fighting when both were JS, so hover is CSS-only now), mobile hamburger (focus-trap incl. burger, Esc, body-scroll-lock, accordion sub-menus), and the wellness media-swap IO. Inline per-page sticky scripts removed; careers/contact keep their inline `.jf-form` + role-chip scripts (site.js does NOT touch forms, to avoid double-binding index's inline handler).
+- **Services dropdown** = service pages: Wellness (built) + Surgery / Dentistry / Diagnostics / End-of-Life (placeholders, will 404 until built). **Client Corner** = Payment Options (placeholder), FAQs (`#faqs`), Contact, Call/Text phone, Request an Appointment (→contact.html). **Team** = `team.html` (placeholder).
+- **Careers dropped from top nav** (per Brees's spec) → still reachable in the **footer**. Flag: confirm where Careers should live.
+- **Footer**: fuller sitemap nav + new `.foot-contact` column (Call/Text + Instagram). 
+- **Phone:** Call `000-000-0000` (placeholder per Brees), Text `805-819-7333`. **Social:** Instagram only, `href="https://www.instagram.com/"` placeholder — **need the real handle/URL.**
+- **Request an Appointment** → contact form (interim; no booking system yet).
+- New CSS: `.nav-list/.has-menu/.nav-menu/.nav-trigger/.caret`, `.nav-burger`, `.mobile-nav/.mobile-list/.m-trigger/.m-menu`, `.social`, `footer .foot-contact`. Mobile breakpoint 920px: topnav→hamburger.
+- Verified: dropdown hover+click+aria all correct, mobile menu + accordions work, index splash intact, no console errors.
+
+### Nav v2 — open confirmations for Brees
+- Real **Instagram URL** (+ any other socials later).
+- **Main phone** number (currently `000-000-0000`).
+- Where **Careers** should live in the nav (currently footer only).
+- Placeholder pages to build: **team.html**, **payment-options.html**, and service pages **surgery/dentistry/diagnostics/end-of-life**.
+
+## Remaining service pages (copy in Drive, same `parentId` folder `1Im2hIZOt4uB90-DNg3KM_6EX2xM-ZVps`)
+DE "Non-Customizable" service docs Brees provided 2026-06-17 (build like wellness):
+- **Surgery** — `1YbwaYhYjPjkVhcUTtlOuLS2WTLBcRK2BR1Y63IaNnVY`
+- **End-of-Life Care** — `1ZKkXaChBeVJfUFlKUK0joLyqqgDZhCV3D9cTTzPQqcc`
+- **Diagnostics** — `15Wxow2R9hasfCC7CKJ2Mg6YC0Jp2YzkYnSEN8IsLYpw`
+- **Dentistry** — `14rR2xgXw-_ZYwjLj8QWfonlfEUd7GbfwcwQm2QYwLNw`
+
+---
+
 ## Forms — JotForm (account: `digitalempathy`, API key in jotform-integration.md)
 
 Wired via hidden-iframe POST (`<iframe name="jotform-submit">` near `</body>`); `.jf-form` JS swaps in a success message on submit. Notifications → **info@bonniemaraah.com**.
 
 | Form | ID | Fields | Used on |
 |---|---|---|---|
-| Mailing List | `261485153773463` | q2_email | name-story signup + contact closer signup |
+| Mailing List | `261485153773463` | q2_email | name-story signup (index.html only now) |
 | Careers Application | `261485187097469` | q2_fullName, q3_email, q4_phone, q5_position, q6_resume | careers.html form |
+| Contact Form | `261675891444165` | q1_fullName, q2_email, q3_phone (optional), q4_message | contact.html "Send us a message" |
+
+**Contact Form created 2026-06-17** (DE Standard naming `Bonnie Mara Animal Hospital - Contact Form`). Emails set via API: notification → `info@bonniemaraah.com` (reply-to = submitter `{email}`, subject `...- {fullName}`); autoresponder → submitter (reply-to = `info@`, one-business-day promise, no fake emergency number). **API quirk:** this key only ADDS questions via `POST /form/{id}/questions` with **`question[...]` bracket params, one per call** — the JSON-body and singular `/question` + `/question/{qid}` endpoints all 404/400. Question EDIT/DELETE not available, so q1_fullName's server-side `required` flag is `None` (couldn't set it) — enforced on the frontend with the HTML `required` attr instead (fine for our iframe-POST integration).
 
 **⚠️ PENDING manual dashboard steps (API can't set these — DE Standard §5):**
-1. Both autoresponders → set Sender Name to "Bonnie Mara Animal Hospital" (else mail comes from "JotForm").
-2. Both notifications → toggle **Attach PDF** ON.
-3. Move both into a BMAH folder if one exists.
+1. All THREE autoresponders → set Sender Name to "Bonnie Mara Animal Hospital" (else mail comes from "JotForm"). [Contact Form autoresponder included now.]
+2. All THREE notifications → toggle **Attach PDF** ON.
+3. Move all into a BMAH folder if one exists.
 4. **`info@bonniemaraah.com` must be a live inbox** to receive notifications.
 
 ---
