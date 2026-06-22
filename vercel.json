@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/careers.html", "destination": "/", "statusCode": 301 },
+    { "source": "/careers", "destination": "/", "statusCode": 301 }
+  ]
+}

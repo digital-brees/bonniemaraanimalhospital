@@ -1281,9 +1281,9 @@
   isolation: isolate;
   overflow: hidden;
   background-color: var(--ink-night);
-  background-image: url('../images/hiring-teaser.jpg');
+  background-image: url('../images/santa-barbara-coast.jpg');
   background-size: cover;
-  background-position: center 40%;
+  background-position: center 35%;
   color: #FFFFFF;
   padding: clamp(96px, 15vh, 150px) 48px;
 }

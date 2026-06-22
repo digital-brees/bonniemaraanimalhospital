@@ -10,6 +10,13 @@
 
 **Status:** Pre-launch splash + dedicated careers page. Actively iterating with Brees. Last big pass: emotional careers page (video hero), site-wide border-radius, blue→cream gradients, JotForm wiring.
 
+**Latest edits (2026-06-22) — LIVE on main:**
+- **No longer hiring.** Removed the **Careers** link from the header nav AND footer nav on `index.html`.
+- **Homepage hiring section repurposed** → "Opening Summer 2026" section (same `.hiring-teaser` component/CSS, now `id="opening"`). New copy: eyebrow "Coming soon", h2 "Opening *Summer 2026.*", lede naming service-area towns (Santa Barbara, Goleta, Montecito, Hope Ranch, Carpinteria) for local SEO, and a **Join the list** button → `#mailing-list` (was "View open positions" → careers.html).
+- **New image:** `assets/images/santa-barbara-coast.jpg` (Shutterstock 1490463449, aerial of SB waterfront; optimized 1600×965, ~458KB). Replaces `hiring-teaser.jpg` as the section bg in site.css (`background-position: center 35%`). White text over navy scrim = ~6.7:1 (AA pass).
+- **careers.html taken down via redirect (reversible):** new `vercel.json` 301-redirects `/careers.html` + `/careers` → `/`. The careers.html file is left FULLY INTACT in the repo. **To bring careers back:** delete the two redirect lines in vercel.json + re-add the nav link (header nav line ~84 + footer nav) + re-add the sitemap entry.
+- Removed careers.html `<loc>` from `sitemap.xml`. `.playwright-cli/` added to `.gitignore`.
+
 **Latest edits (2026-06-04):**
 - Footer credit "Designed by Digital Empathy" now links to `https://digitalempathyinc.com` (new tab) on BOTH index.html + careers.html. Styled `.bottom .credit a` in site.css (inherits italic credit, subtle underline → sea-pale on hover).
 - Both addresses in index.html now hyperlink to Google Maps **directions** (`maps/dir/?api=1&destination=4860+Calle+Real...`), new tab, with aria-labels. Hero `.right` address = underlined link; "Visit us" contact card `.address` = clickable block with a "Get directions →" affordance. Styled `.address .addr-link` + `.hero-row .right .addr-link` in site.css. careers.html has no visible address (unchanged).
