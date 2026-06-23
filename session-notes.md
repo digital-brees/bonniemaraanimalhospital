@@ -10,6 +10,34 @@
 
 **Status:** Pre-launch splash + dedicated careers page. Actively iterating with Brees. Last big pass: emotional careers page (video hero), site-wide border-radius, blue→cream gradients, JotForm wiring.
 
+---
+
+## ⭐ BRANCH MODEL (read first — set 2026-06-23)
+
+There are intentionally **TWO versions of this site, on two branches:**
+
+1. **`main` = THE LIVE SITE.** Home-page splash only, with **careers removed** ("Opening Summer 2026" band, no Careers nav). Deployed to production (`bonniemaraah.com`); auto-deploys from `main`. **Leave it as-is — do not push the full site here until approved to go live.** NOTE: `main` is AHEAD of this branch on the homepage — it has later work (SEO meta, a11y `<main>` landmark, footer/Google-Maps links, the "Opening Summer 2026" band) committed after `staging` split off.
+2. **`staging` = THE FULL MULTI-PAGE SITE (work-in-progress, NOT live).** Where we build out the real site. Gets a Vercel **preview** URL only, never production. **You are here.** Branched from `main` at `3d40764` (before the "stop hiring" pivot), so its `index.html`/nav still include careers — **needs reconciling** (see Tomorrow).
+
+**`staging` pages (all present + backed up to `origin/staging` as of 2026-06-23):**
+`index.html` · `careers.html` · `contact.html` · `wellness.html` · `surgery.html` · `dentistry.html` · `diagnostics.html` · `end-of-life.html`
+- wellness + contact came from commit `8a98f7d` (also added nav-v2: dropdowns + mobile menu).
+- 4 service pages came from commit `15893d5` ("WIP: service pages") — **local-only until today**; pushed to `origin/staging` 2026-06-23 so they're safe.
+
+**Eventual flow:** finish full site on `staging` → reconcile with main's "no careers" decision → merge `staging` → `main` to go live.
+
+### 2026-06-23 session — what happened
+- Found the wellness/contact/service pages weren't lost — they live on `staging`, which had diverged from `main`. Pushed the local-only WIP service-page commit to GitHub to back it up.
+- Verified all 8 pages render correctly via Playwright (0 console errors; proper nav/hero/body). Screenshots in `.playwright-cli/` (gitignored).
+- **GOTCHA logged:** after `git checkout` between branches, the browser serves the **cached `site.css` from the old branch** → pages look "unstyled / messed up." NOT a real CSS bug. Fix: hard-refresh (Ctrl+Shift+R) or, more reliably, open in an **incognito window** (ignores cache). Pages were fine the whole time.
+
+### ▶ TOMORROW — pick up here (on `staging`)
+- **Reconcile `staging` with the "no hiring" decision.** Practice is no longer hiring → the full site should likely also drop the Careers nav link / hiring section (mirror `main`'s `d36e68a`). Confirm with Brees: careers stays or goes on the full build?
+- **Sync `staging`'s homepage up to `main`'s** (main has SEO meta, a11y `<main>`, footer/maps links, "Opening Summer 2026" band — staging's index predates all that). Decide: rebase staging onto main, or hand-port the homepage.
+- **Polish the WIP service pages** (`surgery/dentistry/diagnostics/end-of-life`) — committed as "WIP"; may have placeholder copy/images + rough sections. Review each for real verbatim copy + correct imagery (media rules: no vet faces in-clinic, no gloves, no indoor panting dogs).
+- Wire a **Vercel preview URL** for `staging` so Brees has a shareable non-live link.
+- Preview locally: `python -m http.server 8767` from project root.
+
 **Latest edits (2026-06-04):**
 - Footer credit "Designed by Digital Empathy" now links to `https://digitalempathyinc.com` (new tab) on BOTH index.html + careers.html. Styled `.bottom .credit a` in site.css (inherits italic credit, subtle underline → sea-pale on hover).
 - Both addresses in index.html now hyperlink to Google Maps **directions** (`maps/dir/?api=1&destination=4860+Calle+Real...`), new tab, with aria-labels. Hero `.right` address = underlined link; "Visit us" contact card `.address` = clickable block with a "Get directions →" affordance. Styled `.address .addr-link` + `.hero-row .right .addr-link` in site.css. careers.html has no visible address (unchanged).
