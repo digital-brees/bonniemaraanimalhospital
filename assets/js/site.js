@@ -141,7 +141,7 @@
       '.svc-section .svc-item, .svc-cta .svc-wrap > *, ' +
       '.dn-editorial .svc-wrap > *, .dn-stat-grid > *, .dn-journey-head, .dn-step, .dn-panel-card, .dn-tip-card, ' +
       '.dx-group, .dx-card, .dx-subcard, ' +
-      '.eol-intro, .eol-section .svc-wrap > *, .eol-band, .eol-closer .svc-wrap > *'
+      '.eol-twin-col > *, .eol-closer .svc-wrap > *'
     ));
     if (revealTargets.length) {
       revealTargets.forEach(function (el) { el.classList.add('reveal'); });

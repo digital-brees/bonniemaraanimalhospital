@@ -2484,6 +2484,21 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 /* multi-paragraph spacing inside split list items */
 .svc-split-list p + p { margin-top: 14px; }
 
+/* Diagnostics imaging — dark immersive band variant */
+.dx-section.dx-dark { background: var(--ink-night); }
+.dx-dark .dx-group-head .eyebrow { color: var(--sea-pale); }
+.dx-dark .dx-group-head .eyebrow::before, .dx-dark .dx-group-head .eyebrow::after { background: var(--sea-pale); }
+.dx-dark .dx-group-head h2 { color: #FFFFFF; }
+.dx-dark .dx-group-head h2 .light { color: var(--sea-pale); }
+.dx-dark .dx-card.wide + .dx-card.wide { border-top-color: rgba(201, 216, 230, 0.18); }
+.dx-dark .dx-card h3, .dx-dark .dx-card.feature h3 { color: #FFFFFF; }
+.dx-dark .dx-card p, .dx-dark .dx-card.feature p { color: rgba(233, 240, 247, 0.86); }
+.dx-dark .dx-tags-lead, .dx-dark .dx-card.feature .dx-tags-lead { color: var(--sea-pale); }
+.dx-dark .dx-tags li, .dx-dark .dx-card.feature .dx-tags li { background: rgba(255, 255, 255, 0.08); border-color: rgba(201, 216, 230, 0.30); color: #FFFFFF; }
+.dx-dark .dx-subcard { border-left-color: var(--sea); }
+.dx-dark .dx-subcard h4 { color: #FFFFFF; }
+.dx-dark .dx-subcard p { color: rgba(233, 240, 247, 0.82); }
+
 /* ============================================================
    END-OF-LIFE (end-of-life.html) — quiet editorial
    Distinct: restraint IS the design — spacious centered single column,
@@ -2529,53 +2544,47 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
   .eol-band { background-attachment: scroll; height: clamp(320px, 48vh, 440px); }
 }
 
-.eol-closer { background: linear-gradient(to bottom, var(--mist), var(--cream)); text-align: center; padding: clamp(72px, 12vh, 140px) 0; }
-.eol-closer .eyebrow { margin: 0 0 22px; }
+/* Soft closer = image band + soft scrim */
+.eol-closer {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--ink-night);
+  background-image: url('../images/hero-bmah-poster.jpg');
+  background-size: cover;
+  background-position: center 42%;
+  text-align: center;
+  padding: clamp(96px, 16vh, 180px) 0;
+}
+.eol-closer::before { content: ''; position: absolute; inset: 0; background: rgba(20, 36, 56, 0.66); z-index: 0; }
+.eol-closer .svc-wrap { position: relative; z-index: 1; }
+.eol-closer .eyebrow { color: var(--sea-pale); margin: 0 0 22px; }
+.eol-closer .eyebrow::before, .eol-closer .eyebrow::after { background: var(--sea-pale); }
 .eol-closer h2 {
   font-family: var(--display); font-weight: 400;
   font-size: clamp(30px, 4.6vw, 60px);
   line-height: 1.08; letter-spacing: -0.03em;
-  color: var(--ink-deep); margin: 0 auto 16px; max-width: 20ch;
+  color: #FFFFFF; margin: 0 auto 16px; max-width: 20ch;
+  text-shadow: 0 2px 28px rgba(20, 36, 56, 0.5);
 }
-.eol-closer h2 .light { font-weight: 300; font-style: italic; color: var(--ink); }
-.eol-closer p { font-family: var(--sans); font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 54ch; margin: 0 auto 36px; }
-.eol-closer .btn-apply { background: var(--ink-deep); color: #FFFFFF; }
-.eol-closer .btn-apply:hover { background: var(--ink-night); }
+.eol-closer h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
+.eol-closer p { font-family: var(--sans); font-size: 17px; line-height: 1.7; color: rgba(233, 240, 247, 0.92); max-width: 54ch; margin: 0 auto 36px; text-shadow: 0 1px 18px rgba(20, 36, 56, 0.45); }
+.eol-closer .btn-apply { background: #FFFFFF; color: var(--ink-deep); }
+.eol-closer .btn-apply:hover { background: var(--sea-pale); }
 
-/* Euthanasia = immersive fixed-bg parallax band, copy over a soft scrim */
-.eol-immersive {
-  position: relative;
-  isolation: isolate;
-  background-color: var(--ink-night);
-  background-image: url('../images/dog-cat-sleeping.jpg');
-  background-size: cover;
-  background-position: center 38%;
-  background-attachment: fixed;
-  color: #FFFFFF;
-  min-height: 140vh;
-  padding: 0;
+/* Euthanasia + In-home = side-by-side 50/50 full-width dark band */
+.eol-twin { background: var(--ink-night); color: #FFFFFF; }
+.eol-twin-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.eol-twin-col { padding: clamp(64px, 10vh, 130px) clamp(34px, 5vw, 80px); }
+.eol-twin-col + .eol-twin-col { border-left: 1px solid rgba(201, 216, 230, 0.18); }
+.eol-twin-col .eyebrow { color: var(--sea-pale); margin: 0 0 22px; }
+.eol-twin-col .eyebrow::before, .eol-twin-col .eyebrow::after { background: var(--sea-pale); }
+.eol-twin-col h2 { font-family: var(--display); font-weight: 500; font-size: clamp(32px, 3.6vw, 56px); line-height: 1.04; letter-spacing: -0.03em; color: #FFFFFF; margin: 0 0 24px; }
+.eol-twin-col h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
+.eol-twin-col p { font-family: var(--sans); font-size: 17px; line-height: 1.72; color: rgba(233, 240, 247, 0.88); max-width: 52ch; margin: 0; }
+@media (max-width: 860px) {
+  .eol-twin-grid { grid-template-columns: 1fr; }
+  .eol-twin-col + .eol-twin-col { border-left: none; border-top: 1px solid rgba(201, 216, 230, 0.18); }
 }
-.eol-immersive::before { content: ''; position: absolute; inset: 0; background: rgba(20, 36, 56, 0.60); z-index: 0; }
-.eol-immersive .svc-wrap { position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; align-items: center; }
-.eol-immersive .inner { max-width: 760px; }
-.eol-immersive .eyebrow { color: var(--sea-pale); margin: 0 0 22px; }
-.eol-immersive .eyebrow::before, .eol-immersive .eyebrow::after { background: var(--sea-pale); }
-.eol-immersive h2 { font-family: var(--display); font-weight: 500; font-size: clamp(40px, 6vw, 84px); line-height: 1.0; letter-spacing: -0.03em; color: #FFFFFF; margin: 0 0 26px; text-shadow: 0 2px 28px rgba(20,36,56,0.5); }
-.eol-immersive h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
-.eol-immersive p { font-family: var(--sans); font-size: 18px; line-height: 1.72; color: rgba(233,240,247,0.92); max-width: 58ch; margin: 0; text-shadow: 0 1px 18px rgba(20,36,56,0.45); }
-@media (max-width: 720px) {
-  .eol-immersive { background-attachment: scroll; min-height: auto; padding: clamp(80px, 14vh, 130px) 0; }
-  .eol-immersive .svc-wrap { position: static; min-height: 0; display: block; }
-}
-
-/* In-home = quiet poetic, elevated and airy (offset, large display) */
-.eol-poetic { background: var(--cream); padding: clamp(80px, 15vh, 170px) 0; }
-.eol-poetic .svc-wrap { max-width: 1180px; }
-.eol-poetic .inner { max-width: 760px; }
-.eol-poetic .eyebrow { margin: 0 0 28px; }
-.eol-poetic h2 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 5vw, 62px); line-height: 1.08; letter-spacing: -0.025em; color: var(--ink-deep); margin: 0 0 30px; }
-.eol-poetic h2 .light { font-weight: 300; font-style: italic; color: var(--ink); }
-.eol-poetic p { font-family: var(--display); font-weight: 300; font-size: clamp(18px, 2vw, 24px); line-height: 1.6; letter-spacing: -0.005em; color: var(--muted); max-width: 44ch; margin: 0; }
 
 @media (max-width: 920px) {
   .eol-wrap-narrow { padding: 0 24px; }
