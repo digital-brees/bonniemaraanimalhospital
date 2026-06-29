@@ -2254,6 +2254,8 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 .svc-split-list p { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--muted); margin: 0; }
 .svc-split-media { position: relative; min-height: 540px; overflow: hidden; }
 .svc-split-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.svc-split-prose p { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--muted); margin: 0 0 18px; max-width: 54ch; }
+.svc-split-prose p:last-child { margin-bottom: 0; }
 
 /* Dark numbered band (riffs homepage opening band) */
 .svc-darkband { background: var(--ink-night); color: #FFFFFF; padding: clamp(72px,13vh,150px) 0; }
@@ -2293,7 +2295,25 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 .dn-editorial p { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--muted); margin: 0 0 18px; max-width: 64ch; }
 .dn-editorial p:last-child { margin-bottom: 0; }
 
-.dn-stat { background: var(--ink-night); color: #FFFFFF; padding: clamp(64px, 11vh, 124px) 0; }
+/* Periodontal stat = the dentistry sticky-parallax moment (CSS-only, shows w/ Reduce Motion on) */
+.dn-stat {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--ink-night);
+  background-image: url('../images/brick-wall.jpg');
+  background-size: cover;
+  background-position: center 45%;
+  background-attachment: fixed;
+  color: #FFFFFF;
+  min-height: 150vh;
+  padding: 0;
+}
+.dn-stat::before { content: ''; position: absolute; inset: 0; background: rgba(20, 36, 56, 0.66); z-index: 0; }
+.dn-stat .svc-wrap { position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; align-items: center; }
+@media (max-width: 720px) {
+  .dn-stat { background-attachment: scroll; min-height: auto; padding: clamp(80px, 14vh, 130px) 0; }
+  .dn-stat .svc-wrap { position: static; min-height: 0; display: block; }
+}
 .dn-stat-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
 .dn-stat-fig {
   font-family: var(--display); font-weight: 300;
