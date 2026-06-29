@@ -1595,6 +1595,10 @@ footer.site a:focus-visible,
 .svc-darklist li:nth-child(3).reveal { transition-delay: 140ms; }
 .svc-darklist li:nth-child(4).reveal { transition-delay: 210ms; }
 .svc-darklist li:nth-child(5).reveal { transition-delay: 280ms; }
+/* Dentistry treatment-journey ("Our approach") — each step reveals as its own beat */
+.dn-step:nth-child(2).reveal { transition-delay: 90ms; }
+.dn-step:nth-child(3).reveal { transition-delay: 180ms; }
+.dn-step:nth-child(4).reveal { transition-delay: 270ms; }
 
 .svc-section { background: var(--cream); padding: clamp(36px, 6vh, 64px) 0 clamp(72px, 11vh, 130px); }
 .svc-block {
@@ -1709,15 +1713,17 @@ footer.site a:focus-visible,
   font-size: 16px;
   line-height: 1.4;
   color: var(--ink-deep);
-  padding-left: 28px;
+  padding-left: 22px;
 }
+/* dash marker to match the diagnostics X-ray reasons list */
 .svc-list li::before {
-  content: '\2713';
+  content: '';
   position: absolute;
   left: 0;
-  top: -1px;
-  color: var(--ink);
-  font-weight: 700;
+  top: 0.62em;
+  width: 11px;
+  height: 1px;
+  background: var(--ink);
 }
 
 /* Closing CTA band */
