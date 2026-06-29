@@ -1689,11 +1689,24 @@ footer.site a:focus-visible,
 
 /* Closing CTA band */
 .svc-cta {
-  background: var(--ink-night);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--ink-night);
+  background-image: url('../images/dog-cat-sleeping.jpg');
+  background-size: cover;
+  background-position: center 38%;
   color: var(--cream);
   text-align: center;
-  padding: clamp(72px, 13vh, 150px) 0;
+  padding: clamp(72px, 13vh, 150px) 48px;
 }
+.svc-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(20, 36, 56, 0.74);
+  z-index: 0;
+}
+.svc-cta .svc-wrap { position: relative; z-index: 1; }
 .svc-cta .eyebrow { color: rgba(255, 255, 255, 0.85); margin: 0 0 22px; }
 .svc-cta .eyebrow::before, .svc-cta .eyebrow.both::after { background: rgba(255, 255, 255, 0.5); }
 .svc-cta h2 {
@@ -2125,9 +2138,6 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
   color: var(--ink-deep); margin: 0 0 14px;
 }
 .sg-card p { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--muted); margin: 0; }
-@media (hover: hover) and (min-width: 921px) {
-  .sg-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(20, 36, 56, 0.12); border-color: var(--sea); }
-}
 
 .sg-spotlight { background: var(--ink-night); color: #FFFFFF; padding: clamp(64px, 11vh, 128px) 0; }
 .sg-spotlight-head { max-width: 60ch; margin: 0 0 clamp(36px, 5vh, 56px); }
@@ -2142,19 +2152,12 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 .sg-spotlight-head h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
 .sg-spotlight-head p { font-family: var(--sans); font-size: 17px; line-height: 1.65; color: rgba(233, 240, 247, 0.86); margin: 0; max-width: 60ch; }
 .sg-spotlight .sg-cards { grid-template-columns: repeat(3, 1fr); }
-.sg-card.dark { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(201, 216, 230, 0.18); }
+.sg-card.dark { background: var(--ink-deep); border: 1px solid rgba(201, 216, 230, 0.14); }
 .sg-card.dark .svc-num { color: var(--sea-pale); }
 .sg-card.dark h3 { color: #FFFFFF; }
 .sg-card.dark p { color: rgba(233, 240, 247, 0.88); }
-@media (hover: hover) and (min-width: 921px) {
-  .sg-card.dark:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28); border-color: var(--sea); background: rgba(255, 255, 255, 0.08); }
-}
 @media (max-width: 920px) {
   .sg-cards, .sg-spotlight .sg-cards { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sg-card, .sg-card.dark { transition: none; }
-  .sg-card:hover, .sg-card.dark:hover { transform: none; }
 }
 
 /* ============================================================
