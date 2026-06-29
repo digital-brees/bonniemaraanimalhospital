@@ -128,4 +128,29 @@
     }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
     svcBlocks.forEach(function (b) { io.observe(b); });
   }
+
+  /* ---------- Reveal on load / scroll (interior + service pages) ----------
+     Movement is gated behind prefers-reduced-motion (accessibility). The
+     homepage wires its own reveal inline; here we cover the service pages.
+     NOTE: if you run the OS "Reduce Motion" setting, this stays still by design. */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    var revealTargets = Array.prototype.slice.call(document.querySelectorAll(
+      '.careers-hero .inner > *, .svc-intro .svc-wrap > *, ' +
+      '.svc-split-head, .svc-split-list li, .svc-split-media, ' +
+      '.svc-quote .quote-text, .svc-darkband-head, .svc-darklist li, ' +
+      '.svc-section .svc-item, .svc-cta .svc-wrap > *, ' +
+      '.dn-editorial .svc-wrap > *, .dn-stat-grid > *, .dn-journey-head, .dn-step, .dn-panel-card, .dn-tip-card, ' +
+      '.dx-group, .dx-card, .dx-subcard, ' +
+      '.eol-intro, .eol-section .svc-wrap > *, .eol-band, .eol-closer .svc-wrap > *'
+    ));
+    if (revealTargets.length) {
+      revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealTargets.forEach(function (el) { rio.observe(el); });
+    }
+  }
 })();
