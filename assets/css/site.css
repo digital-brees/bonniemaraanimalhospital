@@ -1555,7 +1555,7 @@ footer.site a:focus-visible,
 .svc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 
 /* Intro = a cream card that overlaps up into the bottom of the hero */
-.svc-intro { background: var(--cream); padding: 0 0 clamp(8px, 2vh, 18px); }
+.svc-intro { background: var(--cream); padding: 0 0 clamp(96px, 14vh, 180px); }
 .svc-intro .svc-wrap { max-width: 1440px; padding: 0 clamp(40px, 6vw, 88px); }
 .svc-intro-card {
   position: relative;
@@ -2199,26 +2199,42 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
    ============================================================ */
 
 /* Pull-quote band (riffs homepage .quote) */
+/* Sticky-parallax pull-quote: fixed background image + quote pinned while it scrolls.
+   Pure CSS, so it shows even with OS "Reduce Motion" on. */
 .svc-quote {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   background-color: var(--ink-night);
   background-image: url('../images/dog-cat-sleeping.jpg');
   background-size: cover;
   background-position: center 42%;
+  background-attachment: fixed;
   color: var(--cream);
-  padding: clamp(96px, 18vh, 180px) 0;
+  min-height: 150vh;
+  padding: 0;
 }
 .svc-quote::before {
   content: '';
   position: absolute; inset: 0;
-  background:
-    linear-gradient(to top, rgba(20,36,56,0.80) 0%, rgba(20,36,56,0.40) 40%, rgba(20,36,56,0.22) 60%, rgba(20,36,56,0.46) 100%),
-    rgba(20,36,56,0.10);
+  background: rgba(20, 36, 56, 0.58);
   z-index: 0;
 }
-.svc-quote .svc-wrap { position: relative; z-index: 1; }
+.svc-quote .svc-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 720px) {
+  .svc-quote {
+    background-attachment: scroll;
+    min-height: auto;
+    padding: clamp(80px, 14vh, 130px) 0;
+  }
+  .svc-quote .svc-wrap { position: static; min-height: 0; display: block; }
+}
 .svc-quote .quote-text { font-family: var(--display); color: #FFFFFF; margin: 0; max-width: 42ch; text-shadow: 0 2px 28px rgba(20,36,56,0.55); }
 .svc-quote .quote-text .lead { display: block; font-weight: 600; font-size: clamp(38px,5.4vw,76px); line-height: 1.03; letter-spacing: -0.03em; max-width: 16ch; }
 .svc-quote .quote-text .light { display: block; font-weight: 300; font-style: italic; font-size: clamp(19px,2.3vw,30px); line-height: 1.28; letter-spacing: -0.01em; color: var(--sea-pale); max-width: 40ch; margin: 0.55em 0 0; }
