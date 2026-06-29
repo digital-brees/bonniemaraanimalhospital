@@ -1560,7 +1560,7 @@ footer.site a:focus-visible,
 .svc-intro-card {
   position: relative;
   z-index: 3;
-  margin-top: clamp(-160px, -15vh, -96px);
+  margin-top: clamp(-112px, -10vh, -66px);
   max-width: 880px;
   background: var(--cream-paper);
   border: 1px solid var(--paper-line);
@@ -1582,7 +1582,7 @@ footer.site a:focus-visible,
 }
 .svc-intro .lead .light { font-weight: 300; font-style: italic; color: var(--ink); }
 @media (max-width: 720px) {
-  .svc-intro-card { margin-top: clamp(-96px, -11vh, -56px); padding: clamp(28px, 7vw, 40px); }
+  .svc-intro-card { margin-top: clamp(-67px, -8vh, -39px); padding: clamp(28px, 7vw, 40px); }
 }
 
 /* Gentle load/scroll stagger (only active when .reveal is animating;
