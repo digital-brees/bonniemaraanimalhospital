@@ -12,7 +12,7 @@
 
 **Latest edits (2026-06-22) — LIVE on main:**
 - **No longer hiring.** Removed the **Careers** link from the header nav AND footer nav on `index.html`.
-- **Homepage hiring section repurposed** → "Opening Summer 2026" section (same `.hiring-teaser` component/CSS, now `id="opening"`). New copy: eyebrow "Coming soon", h2 "Opening *Summer 2026.*", lede naming service-area towns (Santa Barbara, Goleta, Montecito, Hope Ranch, Carpinteria) for local SEO, and a **Join the list** button → `#mailing-list` (was "View open positions" → careers.html).
+- **Homepage hiring section repurposed** → "Opening Summer 2026" section (same `.hiring-teaser` component/CSS, now `id="opening"`). New copy: eyebrow "Coming soon", h2 "Opening *Summer 2026.*", lede naming service-area towns (Santa Barbara, Goleta, Montecito, Summerland, Carpinteria) for local SEO, and a **Join the list** button → `#mailing-list` (was "View open positions" → careers.html).
 - **New image:** `assets/images/santa-barbara-coast.jpg` (Shutterstock 1490463449, aerial of SB waterfront; optimized 1600×965, ~458KB). Replaces `hiring-teaser.jpg` as the section bg in site.css (`background-position: center 35%`). White text over navy scrim = ~6.7:1 (AA pass).
 - **careers.html taken down via redirect (reversible):** new `vercel.json` 301-redirects `/careers.html` + `/careers` → `/`. The careers.html file is left FULLY INTACT in the repo. **To bring careers back:** delete the two redirect lines in vercel.json + re-add the nav link (header nav line ~84 + footer nav) + re-add the sitemap entry.
 - Removed careers.html `<loc>` from `sitemap.xml`. `.playwright-cli/` added to `.gitignore`.
