@@ -140,7 +140,7 @@
       '.svc-quote .quote-text, .svc-darkband-head, .svc-darklist li, ' +
       '.svc-section .svc-item, .svc-cta .svc-wrap > *, ' +
       '.dn-editorial .svc-wrap > *, .dn-stat-grid > *, .dn-journey-head, .dn-step, .dn-panel-card, .dn-tip-card, ' +
-      '.dx-group, .dx-card, .dx-subcard, ' +
+      '.dx-imaging-head, .dx-subcard, ' +
       '.eol-twin-col > *, .eol-closer .svc-wrap > *'
     ));
     if (revealTargets.length) {

@@ -2491,23 +2491,25 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 /* multi-paragraph spacing inside split list items */
 .svc-split-list p + p { margin-top: 14px; }
 
-/* Diagnostics imaging — dark immersive band variant */
-.dx-section.dx-dark { background: var(--ink-night); }
-.dx-dark .dx-group-head .eyebrow { color: var(--sea-pale); }
-.dx-dark .dx-group-head .eyebrow::before, .dx-dark .dx-group-head .eyebrow::after { background: var(--sea-pale); }
-.dx-dark .dx-group-head h2 { color: #FFFFFF; }
-.dx-dark .dx-group-head h2 .light { color: var(--sea-pale); }
-.dx-dark .dx-card.wide + .dx-card.wide { border-top-color: rgba(201, 216, 230, 0.18); }
-.dx-dark .dx-card h3, .dx-dark .dx-card.feature h3 { color: #FFFFFF; }
-.dx-dark .dx-card p, .dx-dark .dx-card.feature p { color: rgba(233, 240, 247, 0.86); }
-.dx-dark .dx-tags-lead, .dx-dark .dx-card.feature .dx-tags-lead { color: var(--sea-pale); }
-/* de-glassed: reasons as a clean dashed 2-col list, no pills */
-.dx-dark .dx-tags, .dx-dark .dx-card.feature .dx-tags { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 40px; max-width: 760px; }
-.dx-dark .dx-tags li, .dx-dark .dx-card.feature .dx-tags li { background: none; border: none; border-radius: 0; padding: 0 0 0 22px; position: relative; font-family: var(--sans); font-size: 15px; line-height: 1.45; color: rgba(233, 240, 247, 0.9); }
-.dx-dark .dx-tags li::before { content: ''; position: absolute; left: 0; top: 0.64em; width: 11px; height: 1px; background: var(--sea); }
-.dx-dark .dx-subcard { border-top-color: rgba(201, 216, 230, 0.18); }
-.dx-dark .dx-subcard h4 { color: #FFFFFF; }
-.dx-dark .dx-subcard p { color: rgba(233, 240, 247, 0.82); }
+/* Diagnostics imaging — wellness-style numbered service items, on a dark section */
+.svc-section.dx-imaging { background: var(--ink-night); }
+.dx-imaging-head { margin: 0 0 clamp(8px, 2vh, 22px); }
+.dx-imaging-head .eyebrow { color: var(--sea-pale); margin: 0 0 16px; }
+.dx-imaging-head .eyebrow::before, .dx-imaging-head .eyebrow::after { background: var(--sea-pale); }
+.dx-imaging-head h2 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 4.2vw, 56px); line-height: 1.0; letter-spacing: -0.03em; color: #FFFFFF; margin: 0; }
+.dx-imaging-head h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
+.dx-imaging .svc-item { border-top-color: rgba(201, 216, 230, 0.18); }
+.dx-imaging .svc-item:first-child { border-top: 1px solid rgba(201, 216, 230, 0.18); }
+.dx-imaging .svc-item-main .num { color: var(--sea-pale); }
+.dx-imaging .svc-item-main > h2 { color: #FFFFFF; }
+.dx-imaging .svc-body > p { color: rgba(233, 240, 247, 0.86); }
+.dx-imaging .svc-list-lead { color: var(--sea-pale); }
+.dx-imaging .svc-list li { color: rgba(233, 240, 247, 0.9); }
+.dx-imaging .svc-list li::before { background: var(--sea); }
+.dx-imaging .dx-sub { margin-top: clamp(18px, 2.4vw, 26px); }
+.dx-imaging .dx-subcard { border-top-color: rgba(201, 216, 230, 0.18); }
+.dx-imaging .dx-subcard h4 { color: #FFFFFF; }
+.dx-imaging .dx-subcard p { color: rgba(233, 240, 247, 0.82); }
 
 /* ============================================================
    END-OF-LIFE (end-of-life.html) — quiet editorial
