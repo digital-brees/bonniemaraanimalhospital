@@ -47,7 +47,7 @@ Brees feedback pass. Done:
 **ALL 3 OTHER SERVICE PAGES DONE — each its OWN composition ("riff, don't clone", content-appropriate):**
 - **Dentistry:** overlap card → "Why dental care matters" **split + image** → periodontal **"By age 3" stat as a sticky-parallax** moment (brick-texture bg) → treatment-journey steps → anesthesia panel → at-home tip → CTA. (Kept its signature stat + journey.)
 - **Diagnostics:** overlap card → Lab **split** (numbered list 01/02 + image) → Imaging **de-boxed to clean editorial** (transparent cards, hairline dividers, light pill tags for X-ray reasons, left-rule sub-items for ultrasound) → CTA. Stays light/clinical (no dark band) to fit diagnostics + differ from surgery.
-- **End-of-life:** overlap card → hospice section → calm image band now a **fixed-bg parallax breath** → euthanasia → in-home → **soft gradient closer kept** (fits the tone). Lightest touch.
+- **End-of-life (REDESIGNED — combination, one treatment per section to fit its emotional character):** overlap card → **Hospice** = warm **split + image** (comforting) → **Euthanasia** = **immersive fixed-bg parallax band**, copy over a soft navy scrim (reverent cinematic peak; sleeping-pets image, AA contrast) → **In-home** = **quiet poetic**, elevated/airy large display, left-offset (intimate) → **soft gradient closer kept**. Dropped the plain centered `.eol-section` blocks + standalone parallax breath. New `.eol-immersive` / `.eol-poetic` styles in site.css. (Prior "lightest touch" version was rejected as too plain/centered.)
 All copy verbatim. All validated: 0 overflow @375/768/1440, valid heading order, screenshots confirmed.
 
 **⏭ STILL TODO:**
