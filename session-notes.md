@@ -12,6 +12,26 @@
 
 ---
 
+## ▶ NEXT SESSION KICKOFF (resume here — wrapped 2026-06-29 EOD)
+
+**Where we are:** All work is on the **`staging`** branch. Latest local commit `e5c6b6c`. Earlier commits this session were pushed to `origin/staging`, but **the EOD notes commit is LOCAL-ONLY (not pushed)** per Brees — `git push` first thing tomorrow to sync (`origin/staging` is one commit behind on notes; code is pushed through `dedff88`). Preview URL: `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`.
+
+**Done & shipped (5 service pages, each a distinct composition — no clones):**
+- wellness, surgery, dentistry, diagnostics, end-of-life — all have video heroes, overlap intro cards, image/dark bands, CTA image bands. Diagnostics imaging = wellness-sec3 numbered items on dark. EOL = hospice split + 50/50 euth|in-home twin + image closer.
+- Nav: **Contact** is now a top-level item; Client Corner = Payment Options + FAQs only (all pages, desktop + mobile).
+
+**Brees's LOCKED design dislikes (do NOT reintroduce):** glass/translucent pills & boxes · one-side (left-rule) accent-border cards · decorative (non-clicking) hover effects · AI-tell patterns. Prefer: editorial top-hairline dividers, dashed/numbered hairline lists, clean fills, riff-don't-clone per page.
+
+**TOMORROW — prioritized to-do:**
+1. **`git push`** the EOD notes commit.
+2. **Team.html + Payment-Options.html** — still 404 in nav (no source copy; BMAH is verbatim-only). Decide: scaffold w/ placeholders vs wait for copy. (Team CAN be partly real from `assets/copy/name-story.md` + `careers.md`.)
+3. **Real imagery** — replace `placehold.co` thumbnails (wellness 01–05 + diagnostics imaging 01/02) and per-service hero VIDEOS (only 2 placeholder clips reused; need a real surgical/clinical clip).
+4. **Confirm** Instagram URL + real phone (still `000-000-0000`); FAQs link on subpages = `index.html#faqs` (OK), home = `#faqs`.
+5. Reduced-motion note: scroll reveals are gated behind `prefers-reduced-motion`; Brees runs Reduce Motion ON, so toggle it OFF to preview the per-beat reveals.
+6. Eventually: reconcile `staging` ↔ `main` "no careers" decision before go-live merge.
+
+---
+
 ## ⭐ BRANCH MODEL (read first — set 2026-06-23)
 
 There are intentionally **TWO versions of this site, on two branches:**
