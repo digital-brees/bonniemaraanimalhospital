@@ -2542,6 +2542,41 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
 .eol-closer .btn-apply { background: var(--ink-deep); color: #FFFFFF; }
 .eol-closer .btn-apply:hover { background: var(--ink-night); }
 
+/* Euthanasia = immersive fixed-bg parallax band, copy over a soft scrim */
+.eol-immersive {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--ink-night);
+  background-image: url('../images/dog-cat-sleeping.jpg');
+  background-size: cover;
+  background-position: center 38%;
+  background-attachment: fixed;
+  color: #FFFFFF;
+  min-height: 140vh;
+  padding: 0;
+}
+.eol-immersive::before { content: ''; position: absolute; inset: 0; background: rgba(20, 36, 56, 0.60); z-index: 0; }
+.eol-immersive .svc-wrap { position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; align-items: center; }
+.eol-immersive .inner { max-width: 760px; }
+.eol-immersive .eyebrow { color: var(--sea-pale); margin: 0 0 22px; }
+.eol-immersive .eyebrow::before, .eol-immersive .eyebrow::after { background: var(--sea-pale); }
+.eol-immersive h2 { font-family: var(--display); font-weight: 500; font-size: clamp(40px, 6vw, 84px); line-height: 1.0; letter-spacing: -0.03em; color: #FFFFFF; margin: 0 0 26px; text-shadow: 0 2px 28px rgba(20,36,56,0.5); }
+.eol-immersive h2 .light { font-weight: 300; font-style: italic; color: var(--sea-pale); }
+.eol-immersive p { font-family: var(--sans); font-size: 18px; line-height: 1.72; color: rgba(233,240,247,0.92); max-width: 58ch; margin: 0; text-shadow: 0 1px 18px rgba(20,36,56,0.45); }
+@media (max-width: 720px) {
+  .eol-immersive { background-attachment: scroll; min-height: auto; padding: clamp(80px, 14vh, 130px) 0; }
+  .eol-immersive .svc-wrap { position: static; min-height: 0; display: block; }
+}
+
+/* In-home = quiet poetic, elevated and airy (offset, large display) */
+.eol-poetic { background: var(--cream); padding: clamp(80px, 15vh, 170px) 0; }
+.eol-poetic .svc-wrap { max-width: 1180px; }
+.eol-poetic .inner { max-width: 760px; }
+.eol-poetic .eyebrow { margin: 0 0 28px; }
+.eol-poetic h2 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 5vw, 62px); line-height: 1.08; letter-spacing: -0.025em; color: var(--ink-deep); margin: 0 0 30px; }
+.eol-poetic h2 .light { font-weight: 300; font-style: italic; color: var(--ink); }
+.eol-poetic p { font-family: var(--display); font-weight: 300; font-size: clamp(18px, 2vw, 24px); line-height: 1.6; letter-spacing: -0.005em; color: var(--muted); max-width: 44ch; margin: 0; }
+
 @media (max-width: 920px) {
   .eol-wrap-narrow { padding: 0 24px; }
 }

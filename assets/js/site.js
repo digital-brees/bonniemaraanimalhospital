@@ -136,7 +136,7 @@
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     var revealTargets = Array.prototype.slice.call(document.querySelectorAll(
       '.careers-hero .inner > *, .svc-intro .svc-wrap > *, ' +
-      '.svc-split-head, .svc-split-list li, .svc-split-media, ' +
+      '.svc-split-head, .svc-split-list li, .svc-split-media, .svc-split-prose, ' +
       '.svc-quote .quote-text, .svc-darkband-head, .svc-darklist li, ' +
       '.svc-section .svc-item, .svc-cta .svc-wrap > *, ' +
       '.dn-editorial .svc-wrap > *, .dn-stat-grid > *, .dn-journey-head, .dn-step, .dn-panel-card, .dn-tip-card, ' +
