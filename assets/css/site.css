@@ -1553,24 +1553,21 @@ footer.site a:focus-visible,
 .svc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 
 .svc-intro { background: var(--cream); padding: clamp(64px, 10vh, 120px) 0 clamp(8px, 2vh, 18px); }
-.svc-intro .svc-wrap { display: grid; grid-template-columns: minmax(0, 14ch) minmax(0, 1fr); column-gap: clamp(28px, 5vw, 72px); align-items: start; }
-.svc-intro .eyebrow { margin: 10px 0 0; white-space: nowrap; }
+/* Align the intro's left edge with the section heads below (same 1440 frame as .svc-split-grid) */
+.svc-intro .svc-wrap { max-width: 1440px; padding: 0 clamp(40px, 6vw, 88px); }
+.svc-intro .eyebrow { margin: 0 0 22px; }
 .svc-intro .lead {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(26px, 3.5vw, 46px);
-  line-height: 1.22;
+  font-size: clamp(25px, 3.1vw, 40px);
+  line-height: 1.24;
   letter-spacing: -0.02em;
   color: var(--ink-deep);
-  max-width: 26ch;
+  max-width: 28ch;
   margin: 0;
   text-wrap: balance;
 }
 .svc-intro .lead .light { font-weight: 300; font-style: italic; color: var(--ink); }
-@media (max-width: 720px) {
-  .svc-intro .svc-wrap { grid-template-columns: 1fr; row-gap: 18px; }
-  .svc-intro .eyebrow { margin: 0; }
-}
 
 /* Gentle load/scroll stagger (only active when .reveal is animating;
    under prefers-reduced-motion .reveal is forced still, so these no-op). */
