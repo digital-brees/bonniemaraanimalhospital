@@ -37,7 +37,7 @@ Brees feedback pass. Done:
 - **Interior heroes are now VIDEO (Section 1)** on surgery/dentistry/diagnostics/end-of-life (matching wellness). Each keeps its compliant poster `<img>` (shown under reduced-motion, which Brees runs) + a layered `<video>`. ⚠️ PLACEHOLDER CLIPS — only 2 video assets exist: surgery+end-of-life=`hero-bmah.mp4` (beach), dentistry+diagnostics=`careers-hero.mp4` (gentle exam). **Need unique licensed footage per service** (esp. a surgical/clinical clip — beach behind "Surgical care" is a stand-in).
 - **Glass boxes removed (de-AI):** `.sg-card.dark` translucent `rgba(255,255,255,.05)`+thin-border frosted-glass cards → CSS now solid `var(--ink-deep)`. AND surgery's two card sections (Core + Advanced) fully **converted to the approved wellness `.svc-items` pattern** (number + thumbnail image + body, hairline dividers, NO boxes). 7 procedures preserved verbatim; the "Advanced & minimally invasive" framing sentence folded into the intro lead. Heading order valid (h1 + h2s).
 - **Decorative hovers removed:** `.sg-card`/`.sg-card.dark` hover-lift (translateY) deleted — those cards aren't links. Hover now only on actual links/buttons/accordion.
-- **Service CTA = image + blue overlay band** (like the homepage opening band): `.svc-cta` now has `dog-cat-sleeping.jpg` bg + `rgba(20,36,56,.74)` navy overlay (was a flat navy block). Applies to surgery/dentistry/diagnostics. NOTE: end-of-life uses a different softer `.eol-closer` (gradient, no image) — left as-is for tone; confirm if she wants it imaged too.
+- **Service CTA = image + blue overlay band** (like the homepage opening band): `.svc-cta` now has `dog-cat-sleeping.jpg` bg + `rgba(20,36,56,.74)` navy overlay (was a flat navy block). Applies to surgery/dentistry/diagnostics. NOTE: end-of-life uses a different softer `.eol-closer` (gradient, no image) — left as-is for tone; confirm if he wants it imaged too.
 - **Validated (Playwright):** all 4 pages 0 overflow @375/1440, hero video present, CTA image confirmed. Surgery screenshotted — list + CTA band look right.
 
 **SURGERY REDESIGN (Brees: "don't make every page feel the same — riff off the homepage and create elements"):** Reverted surgery off the wellness thumbnail-list clone. Built 3 NEW service-page elements that riff homepage components (new CSS classes, top-level): `.svc-quote` (full-bleed image + layered navy scrim + bold lead / italic sea-pale sub + text-shadow — riffs homepage `.quote` brick band), `.svc-split` / `.svc-split-list` (2-col numbered hairline list + tall image — riffs homepage `.services-grid`), `.svc-darkband` / `.svc-darklist` (navy full-bleed, headline + framing + 2-col numbered list, solid NO boxes — riffs homepage opening band). Surgery rhythm now: video hero → cream intro → pull-quote band → Core split(list+image) → Advanced dark band → CTA image band. Restores the Core/Advanced split as labeled sections. All copy verbatim (the "From check-in to pick-up…in good hands" sentence is split into the quote band's lead/light; "Our team is equipped…" is the dark band's framing). Validated: 0 overflow @375/768/1440, heading order valid, screenshots confirmed all 3 elements render like the homepage. ⚠️ split image = `careers.jpg` (held dog, mouth slightly open — borderline; placeholder).
@@ -55,7 +55,7 @@ Brees feedback pass. Done:
 - **Media-rule fix — surgery hero.** It was reusing `careers-hero-poster.jpg`, which shows a **staff face in-clinic** + a **dog mouth-open indoors** (violates 2 CLAUDE.md image rules). Swapped to the compliant **`brick-wall.jpg`** (paw-in-brick; echoes the homepage motif) as an interim placeholder. Hero `<img>` + `<link rel=preload>` both updated.
 
 ### ▶ NEXT — pick up here (on `staging`)
-- **Hero imagery still placeholder on all 4 service pages** (dentistry=`dog-cat-sleeping.jpg` ✅compliant, end-of-life=`hero-bmah-poster.jpg` ✅compliant outdoor run, diagnostics=`careers.jpg` ⚠️held dog mouth slightly open indoors — borderline, surgery=`brick-wall.jpg` interim). **Ask Brees if she wants real/licensed surgery + diagnostics photography** (per CLAUDE.md, don't pull new Shutterstock without her ask). Drive photo folder still empty.
+- **Hero imagery still placeholder on all 4 service pages** (dentistry=`dog-cat-sleeping.jpg` ✅compliant, end-of-life=`hero-bmah-poster.jpg` ✅compliant outdoor run, diagnostics=`careers.jpg` ⚠️held dog mouth slightly open indoors — borderline, surgery=`brick-wall.jpg` interim). **Ask Brees if he wants real/licensed surgery + diagnostics photography** (per CLAUDE.md, don't pull new Shutterstock without his ask). Drive photo folder still empty.
 - **Other placeholder pages to build:** `team.html`, `payment-options.html` (both linked in nav but will 404).
 - Still-open content confirmations (unchanged): real Instagram URL, main phone (`000-000-0000` placeholder), confirm 805-819-7333 is voice or text-only.
 - Wire a **Vercel preview URL** for `staging` so Brees has a shareable non-live link.
@@ -131,14 +131,14 @@ Brees feedback pass. Done:
 
 ## `contact.html` — dedicated contact page (built 2026-06-17, on `staging`)
 
-**IMPORTANT framing decision (Brees, 2026-06-17):** the `staging` branch is the FULL "we're open" site, NOT a pre-launch splash. New pages should read as if the practice is open — no "coming soon." (Exception she chose: KEEP "Opening Summer 2026" in the header lockup + footer "for now.")
+**IMPORTANT framing decision (Brees, 2026-06-17):** the `staging` branch is the FULL "we're open" site, NOT a pre-launch splash. New pages should read as if the practice is open — no "coming soon." (Exception he chose: KEEP "Opening Summer 2026" in the header lockup + footer "for now.")
 - Built from the careers.html template (same header/logo/nav/footer chrome). Nav order: Home · Services · FAQ · Careers · **Contact** (current). Contact link added to nav + footer on index.html + careers.html too.
 - **Hero** — reuses `.careers-hero` markup with a static poster only (no video): `hero-bmah-poster.jpg` (beach/dog) + scrim. Eyebrow "Get in touch", h1 "We can't wait to *meet you.*" (verbatim from splash invite).
 - **Visit-us card** (`.invite.is-page`, balanced 1fr/1fr) — left: clickable address → Google Maps directions + 4-cell info grid **Hours / Phone (805-819-7333, "Call or text") / Patients / Visits** (the old "Opening — date TBD" cell was replaced by Phone to read open). Right: **"Send us a message."** form card (`.contact-form-col`, white paper card) → JotForm `261675891444165`.
 - **Google Map** — embedded `<iframe>` via keyless `maps.google.com/maps?q=...&output=embed`, full-width below the card, rounded (`--radius-lg`), lazy-loaded, titled for a11y.
 - New CSS lives in site.css: `.contact-map`, `.invite.is-page` overrides, `.contact-form-col`/`.contact-form`, `.address .tel-link`; `.closer-signup h2` added alongside `h3`. Breakpoints: card stacks at 920px, inner form stacks at 540px. Verified: heading order h1→h2, all inputs labeled, mobile overflow 0 at 375.
 
-**⚠️ Phone note:** 805-819-7333 is a **texting number Brees gave**; she's unsure if it's also the main voice line. Shown as "Call or text" and deliberately NOT added to JSON-LD `telephone` yet. Confirm before treating as the primary number.
+**⚠️ Phone note:** 805-819-7333 is a **texting number Brees gave**; he's unsure if it's also the main voice line. Shown as "Call or text" and deliberately NOT added to JSON-LD `telephone` yet. Confirm before treating as the primary number.
 
 ---
 
@@ -156,9 +156,9 @@ Brees feedback pass. Done:
 **⚠️ Wellness copy — sections to confirm before publish** (per the doc's own "include only what applies" instruction; flagged to Brees): Lyme vaccine (uncommon in S. CA), Rattlesnake toxoid, Canine influenza, and Blood cancer screening/liquid biopsy. Built with the FULL template; trim to BMAH's actual offerings.
 
 **Wellness page v2 (2026-06-17, Brees feedback):**
-- **Hero is now a VIDEO** (reuses `careers-hero.mp4` + `careers-hero-poster.jpg` as a placeholder — exam-room footage fits wellness). ⚠️ Site disables autoplay hero video under `prefers-reduced-motion` (a11y) and **Brees runs Reduce Motion ON, so she sees the poster, not motion** — normal visitors see the video. Told her to toggle Reduce Motion off to preview. Needs a wellness-specific clip eventually.
+- **Hero is now a VIDEO** (reuses `careers-hero.mp4` + `careers-hero-poster.jpg` as a placeholder — exam-room footage fits wellness). ⚠️ Site disables autoplay hero video under `prefers-reduced-motion` (a11y) and **Brees runs Reduce Motion ON, so he sees the poster, not motion** — normal visitors see the video. Told him to toggle Reduce Motion off to preview. Needs a wellness-specific clip eventually.
 - **Layout (FINAL, Brees-approved via preview pick) = clean stacked list + small thumbnail** (`.svc-items` > `.svc-item` = grid `[thumb | main]`; main = num + h2 + `.svc-body`). Small square `.svc-thumb` (sticky `top:104px`) left of each section; number eyebrow + title + full verbatim body (incl. vax cards + lists) on the right; hairline dividers between; several services visible at once. Mobile (<=920): single column (thumb 72px above text), vax-grid stacks. Verified: 5 items, desktop + mobile overflow 0.
-  - **Layout iteration history (so we don't loop):** v1 text-only clean stacked (she liked polish, wanted images) → v2 full-height sticky-media-swap (one image swaps per section; "this is good" but wanted to see >1 service) → v3 alternating image+text rows ("No I don't like this") → **v4 clean list + small thumbnail = the keeper.**
+  - **Layout iteration history (so we don't loop):** v1 text-only clean stacked (he liked polish, wanted images) → v2 full-height sticky-media-swap (one image swaps per section; "this is good" but wanted to see >1 service) → v3 alternating image+text rows ("No I don't like this") → **v4 clean list + small thumbnail = the keeper.**
   - **Dead CSS left in site.css (harmless, can delete):** `.svc-scroller/.svc-media/.svc-media-img` (v2), `.svc-content .svc-block`/`.svc-block-img` (v2), `.svc-rows/.svc-row/.svc-row-media/.svc-row-text/.svc-row-wide` (v3). The media-swap IntersectionObserver in site.js no-ops (no `.svc-media` in DOM).
 - ⚠️ **All 5 thumbnails are branded `placehold.co` placeholders** (navy squares labeled 01–05; the number also shows as an eyebrow, so real photos remove the apparent dup). Swap for real wellness photos — or pull licensed Shutterstock if Brees asks (per CLAUDE.md, placeholders by default).
 
@@ -215,14 +215,14 @@ Wired via hidden-iframe POST (`<iframe name="jotform-submit">` near `</body>`); 
 
 ## Copy mode
 
-**Verbatim BMAH-specific.** Local source-of-truth in `assets/copy/{name-story,faqs,careers}.md`. Careers headline "Why work for Bonnie Mara Animal Hospital?" is the verbatim doc heading; hero/quote lines ("Come work where it's worth it", "true team", "saving lives") are verbatim-derived. **Removed the invented "Help us build the hospital we've always wanted to work in" headline** — Brees flagged it as not-her-words.
+**Verbatim BMAH-specific.** Local source-of-truth in `assets/copy/{name-story,faqs,careers}.md`. Careers headline "Why work for Bonnie Mara Animal Hospital?" is the verbatim doc heading; hero/quote lines ("Come work where it's worth it", "true team", "saving lives") are verbatim-derived. **Removed the invented "Help us build the hospital we've always wanted to work in" headline** — Brees flagged it as not-his-words.
 
 ---
 
 ## Lessons captured this session
 
 - **Extracting inline CSS to a file breaks relative `url()` paths** — they become relative to the CSS file. Fixed brick bg to `../images/`. (This caused the brick image to disappear; the "lone favicon 404" was actually this.)
-- **Reduced-motion gates ALL scroll motion** (parallax + IntersectionObserver reveals). Brees runs with Reduce Motion ON, so JS scroll effects don't show for her — that's why the JS tide-parallax "didn't move." The fix was a **CSS-only sticky-hero** (works regardless). Use CSS, not JS, for motion she must be able to preview.
+- **Reduced-motion gates ALL scroll motion** (parallax + IntersectionObserver reveals). Brees runs with Reduce Motion ON, so JS scroll effects don't show for him — that's why the JS tide-parallax "didn't move." The fix was a **CSS-only sticky-hero** (works regardless). Use CSS, not JS, for motion he must be able to preview.
 - **Don't strand a rhetorical pull-quote** — keep its payoff attached (the "saving lives?" → "We offer…" pairing).
 - **Careers as its own page** solved the "applicants' form looks like a client contact box" problem cleanly.
 - The seal-inset centers via `transform: translate(-50%,-50%)` — keep it OUT of the scroll-reveal selector or `transform:none` clobbers the centering.
@@ -277,7 +277,7 @@ Ran axe-core (wcag2a + wcag2aa + best-practice, injected via CDN through Playwri
 
 - **Phone number** for pre-opening (not in FAQs doc). Also feeds JSON-LD `telephone`.
 - **Real BMAH photos** — swap placeholders (hero videos, services image, careers image, hiring-teaser) for real interior/exterior/team photos when available (Drive folder still empty).
-- **Hiring-teaser image** (`hiring-teaser.jpg`) shows an identifiable person in scrubs in a clinic — bumps the "no staff faces in clinic settings" media guideline. Brees chose it explicitly for the careers band; flagged for her final call.
+- **Hiring-teaser image** (`hiring-teaser.jpg`) shows an identifiable person in scrubs in a clinic — bumps the "no staff faces in clinic settings" media guideline. Brees chose it explicitly for the careers band; flagged for his final call.
 - JotForm manual dashboard steps (above).
 - ~~Favicon set, OG share image, Schema.org VeterinaryCare data.~~ ✅ DONE (see SEO section above).
 - **Launch:** swap `robots.txt` ← `robots.production.txt` (now includes Sitemap line); confirm Vercel + production domain; sitemap.xml live.
