@@ -2471,6 +2471,19 @@ footer.site .foot-tel .lbl { color: rgba(201, 216, 230, 0.6); letter-spacing: 0.
   .dx-cards, .dx-sub { grid-template-columns: 1fr; }
 }
 
+/* Diagnostics imaging — de-boxed editorial (no card borders/fills) */
+.dx-card { background: transparent; border: none; border-radius: 0; padding: clamp(36px, 6vh, 64px) 0 0; }
+.dx-card.wide + .dx-card.wide { border-top: 1px solid var(--paper-line); }
+.dx-card.feature { background: transparent; color: inherit; }
+.dx-card.feature h3 { color: var(--ink-deep); }
+.dx-card.feature p { color: var(--muted); }
+.dx-card.feature .dx-tags-lead { color: var(--ink); }
+.dx-card.feature .dx-tags li { background: var(--mist); border-color: var(--paper-line); color: var(--ink-deep); }
+.dx-subcard { background: transparent; border-radius: 0; border-left: 2px solid var(--sea); padding: 4px 0 4px clamp(16px, 2vw, 22px); }
+
+/* multi-paragraph spacing inside split list items */
+.svc-split-list p + p { margin-top: 14px; }
+
 /* ============================================================
    END-OF-LIFE (end-of-life.html) — quiet editorial
    Distinct: restraint IS the design — spacious centered single column,
