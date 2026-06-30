@@ -16,7 +16,24 @@
 
 **Where we are:** All work on the **`staging`** branch. **2026-06-30 work is committed LOCALLY only (Brees asked for a local commit, NOT pushed).** `origin/staging` is now behind — `git push` when ready to back up / share the preview. Preview URL (after push): `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`. Local preview: `py -3 -m http.server 8767` from project root.
 
-**Done this session (2026-06-30, w/ Brees):**
+### 2026-06-30 (part 2) — MEDIA PUNCH LIST (w/ Brees, committed locally)
+Brees reviewed the de-duplicated media and gave a punch list. All addressed (Pexels, still 0 cross-page dupes — render audit re-confirmed):
+1. **Wellness §3 thumbnails** — 5 `placehold.co` placeholders → real single-pet portraits (`thumb-wellness-visits/physical-exams/vaccinations/parasite/wellness-dx.jpg`; all cats/kittens to balance the dog hero). Number now a small eyebrow only.
+2. **Surgery hero** — Brees disliked the surgical-instruments clip, wanted "a pet maybe with a cone." ⚠️ **Pexels had no good cone clip** → used a **calm resting/recovering dog** (`hero-surgery.mp4` ID 5531387 + new poster). FLAGGED to Brees: keep hunting for a cone or he'll supply one.
+3. **Surgery "From check-in to pick-up"** (`img-surgery-quote.jpg`) → now a **cat** cradled in arms (ID 26832389).
+4. **CTA bands now have images** (reverses the earlier clean-navy-fill decision). Per-page unique images via new modifier classes `.svc-cta.cta-{wellness,surgery,dentistry,diagnostics,payment}` → `cta-*.jpg`. Base `.svc-cta` keeps the navy gradient as fallback; `::before` rgba(20,36,56,.74) scrim sits on top so white text passes contrast.
+5. **Dentistry hero** (dirty-dog face) → **clean cat** clip (`hero-dentistry.mp4` ID 10002416 + new poster). **Dentistry split** (`img-dentistry-split.jpg`, was dirty golden) → **calico cat** portrait (ID 2692739). Dentistry now cat-heavy per Brees.
+6. **Dentistry "By age 3" `.dn-stat`** → image restored (`img-dentistry-stat.jpg`, dog teeth/gum check ID 7210337, under navy scrim). ⚠️ FLAGGED as slightly intense — easy swap. Dentistry CTA gets `cta-dentistry.jpg`.
+7. **Diagnostics imaging thumbnails** — `thumb-xray.jpg` (radiograph monitor ID 6501862 — ⚠️ no real pet radiograph on Pexels, reads as "digital X-ray") + `thumb-ultrasound.jpg` (ultrasound machine, equipment-only no faces, ID 6235234).
+8. **End-of-Life hero** — Brees said he'll supply a different video → **LEFT AS-IS (`hero-eol.mp4`), awaiting his file.** Do NOT source one.
+9. **EOL hospice split** (`img-eol-split.jpg`) → **sleeping cat** under blanket (ID 4062842).
+10. **Payment CTA** → `cta-payment.jpg`.
+11. **Contact map** → **full-bleed full-viewport width** (`.contact-map { margin: ... calc(50% - 50vw); width:auto }`, iframe `border-radius:0`, taller). Validated: map width == viewport, left edge 0, no overflow @375/1440.
+
+**Same-filename overwrites = already wired** (no HTML change needed): hero-surgery/dentistry .mp4+poster, img-surgery-quote, img-dentistry-split, img-eol-split.
+**Validation:** all 9 pages 0 overflow @1440/375, 0 console errors, 0 broken assets, **dup audit = NONE**, both new hero videos load (readyState 4), CTA + stat backgrounds confirmed, map full-width confirmed.
+
+**Done this session (2026-06-30, part 1, w/ Brees):**
 1. **Footer fully rebuilt** → multi-column DE pattern (brand+tagline+social · Explore · Visit · Contact + legal bar), on all 9 pages. See "Footer" section below.
 2. **Dentistry redesign** — the two flat text blocks Brees disliked are now distinct beats: "Safe anesthesia" = full-bleed dark image band + dashed safeguards pair (`.dn-anes`); "Between visits" = light editorial 2-col with an "Our team can" dashed list (`.dn-home`). Old `.dn-panel`/`.dn-tip` removed.
 3. **`payment-options.html` BUILT** (was a nav 404) — full page in the design language: intro lead → Ways to Pay (4-item: cards · cash · Financing options ↓ · Pet insurance ↓, the last two jump-link to their sections) → Financing (real **CareCredit + Scratchpay logos**, "Learn more & apply" → real apply URLs) → Pet insurance dark band (3 steps) → CTA. Copy is AUTHORED placeholder (BMAH had no payment copy) — every specific FLAGGED in HTML comments.
@@ -340,21 +357,24 @@ Ran axe-core (wcag2a + wcag2aa + best-practice, injected via CDN through Playwri
 | index (home) | `hero-bmah.mp4` | `hero-bmah-poster.jpg` | original BMAH (beach) — KEEP |
 | careers | `careers-hero.mp4` | `careers-hero-poster.jpg` | original (exam room) — KEEP |
 | wellness | `hero-wellness.mp4` | `hero-wellness-poster.jpg` | Pexels (retriever on grass) |
-| surgery | `hero-surgery.mp4` | `hero-surgery-poster.jpg` | Pexels (surgical instruments) |
-| dentistry | `hero-dentistry.mp4` | `hero-dentistry-poster.jpg` | Pexels (calm dog face) |
+| surgery | `hero-surgery.mp4` | `hero-surgery-poster.jpg` | Pexels (calm resting dog — cone clip not found; placeholder) |
+| dentistry | `hero-dentistry.mp4` | `hero-dentistry-poster.jpg` | Pexels (clean cat, ID 10002416) |
 | diagnostics | `hero-diagnostics.mp4` | `hero-diagnostics-poster.jpg` | Pexels (lab microscope) |
 | end-of-life | `hero-eol.mp4` | `hero-eol-poster.jpg` | Pexels (dog in garden) |
 | contact | `hero-contact.mp4` | `hero-contact-poster.jpg` | Pexels (cat at home) |
 | payment-options | `hero-payment.mp4` | `hero-payment-poster.jpg` | Pexels (dog on lawn) |
 
 **Content / band images** (`assets/images/`, all Pexels, page-scoped):
-- Splits: `img-dentistry-split.jpg` (golden) · `img-surgery-split.jpg` (owner embrace) · `img-eol-split.jpg` (sunset shepherd) · `img-diagnostics-split.jpg` (tabby)
-- Immersive bands: `img-surgery-quote.jpg` (paw-hold → `.svc-quote`) · `img-dentistry-anes.jpg` (sleeping cat → `.dn-anes`) · `img-eol-band.jpg` (senior+dog → `.eol-band`) · `img-eol-closer.jpg` (sunset field → `.eol-closer`)
+- Splits: `img-dentistry-split.jpg` (**calico cat** — was golden) · `img-surgery-split.jpg` (owner embrace) · `img-eol-split.jpg` (**sleeping cat** hospice — was sunset shepherd) · `img-diagnostics-split.jpg` (tabby)
+- Immersive bands: `img-surgery-quote.jpg` (**cat in arms** → `.svc-quote`) · `img-dentistry-anes.jpg` (sleeping cat → `.dn-anes`) · `img-dentistry-stat.jpg` (dog teeth check → `.dn-stat` "By age 3") · `img-eol-band.jpg` (senior+dog → `.eol-band`) · `img-eol-closer.jpg` (sunset field → `.eol-closer`)
+- **CTA band images** (per-page, `.svc-cta.cta-*`): `cta-wellness.jpg` · `cta-surgery.jpg` · `cta-dentistry.jpg` · `cta-diagnostics.jpg` · `cta-payment.jpg`
+- **Wellness §3 thumbnails:** `thumb-wellness-visits.jpg` · `thumb-physical-exams.jpg` · `thumb-vaccinations.jpg` · `thumb-parasite.jpg` · `thumb-wellness-dx.jpg`
+- **Diagnostics imaging thumbnails:** `thumb-xray.jpg` (radiograph monitor) · `thumb-ultrasound.jpg` (ultrasound machine)
 - **Home-only** (each now unique to index): `dog-cat-sleeping.jpg` (services img) · `brick-wall.jpg` (paw quote band) · `hero-bmah-poster.jpg` (hero) · `hiring-teaser.jpg` (unused now — careers dropped)
 - `careers.jpg` → careers.html application-form image only.
 - **Logos:** `assets/images/logos/carecredit.svg` + `scratchpay.svg` (real, from brand sites).
 - SEO/icons: `og-bmah.jpg` · `apple-touch-icon.png` · `favicon-{16,32,48,180,192,512}.png` · `logo/logo-page-1.png` · root `favicon.ico` · `sitemap.xml` · `make_seo_assets.py`.
 
-**`.svc-cta` (CTA band on wellness/surgery/dentistry/diagnostics/payment) + `.dn-stat` (dentistry stat) are now CLEAN NAVY GRADIENTS** (no photo) — done to remove shared-image dups; matches the "prefer clean fills" rule. Confirm Brees wants them imageless (else source unique-per-page CTA photos).
+**`.svc-cta` CTA bands + `.dn-stat` now carry UNIQUE per-page photos again** (2026-06-30 part 2 — Brees wanted images behind every CTA + the "By age 3" stat). Each uses a page-scoped `cta-*.jpg` / `img-dentistry-stat.jpg` under the navy `::before` scrim; still 0 cross-page dupes. (Superseded the brief clean-navy-fill experiment.)
 
 **All new media is Pexels (royalty-free, credit appreciated not required)** — solid placeholders until real BMAH footage/photos arrive. Compliant with content rules (no clinic vet-faces, gloves only on the surgical-instruments clip, no indoor panting).

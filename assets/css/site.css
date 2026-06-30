@@ -958,13 +958,17 @@
     .invite.is-page .address > .eyebrow { display: inline-flex; margin: 0 0 26px; }
 
     /* Embedded Google map on the contact page */
-    .contact-map { margin-top: clamp(48px, 7vh, 88px); }
+    .contact-map {
+      /* full-bleed: break out of the centered .invite-wrap to span the viewport */
+      margin: clamp(48px, 7vh, 88px) calc(50% - 50vw) 0;
+      width: auto;
+    }
     .contact-map iframe {
       display: block;
       width: 100%;
-      height: clamp(320px, 50vh, 500px);
+      height: clamp(360px, 52vh, 560px);
       border: 0;
-      border-radius: var(--radius-lg);
+      border-radius: 0;
     }
 
     /* Contact page: balanced address | message-form layout */
@@ -2349,9 +2353,9 @@ footer.site .foot-info a:hover { color: #FFFFFF; }
   position: relative;
   isolation: isolate;
   background-color: var(--ink-night);
-  background-image: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink-night) 100%);
+  background-image: url('../images/img-dentistry-stat.jpg');
   background-size: cover;
-  background-position: center 45%;
+  background-position: center 35%;
   background-attachment: fixed;
   color: #FFFFFF;
   min-height: 150vh;
@@ -2834,3 +2838,10 @@ footer.site .foot-info a:hover { color: #FFFFFF; }
   .pay-opt:not(:first-child) { margin-top: 36px; }
   .pay-ins-grid { grid-template-columns: 1fr; gap: 36px; }
 }
+
+/* Per-page CTA background images (unique per page; ::before navy scrim sits on top) */
+.svc-cta.cta-wellness    { background-image: url('../images/cta-wellness.jpg'); }
+.svc-cta.cta-surgery     { background-image: url('../images/cta-surgery.jpg'); }
+.svc-cta.cta-dentistry   { background-image: url('../images/cta-dentistry.jpg'); }
+.svc-cta.cta-diagnostics { background-image: url('../images/cta-diagnostics.jpg'); }
+.svc-cta.cta-payment     { background-image: url('../images/cta-payment.jpg'); }
