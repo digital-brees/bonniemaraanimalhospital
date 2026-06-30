@@ -12,7 +12,40 @@
 
 ---
 
-## ▶ NEXT SESSION KICKOFF (resume here — wrapped 2026-06-30 EOD)
+## ▶ NEXT SESSION KICKOFF (resume here — wrapped 2026-06-30, part 3)
+
+**Where we are:** On `staging`. **2026-06-30 part 3 committed AND pushed to `origin/staging`** (Brees asked to push so the preview updates). Preview URL: `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`. Local preview: `py -3 -m http.server 8767`.
+
+### 2026-06-30 (part 3) — full media overhaul w/ Brees (Brees hand-picked nearly every asset)
+Brees supplied most images/videos from his Downloads (Shutterstock-licensed) + a few Pexels. All same-filename overwrites (no HTML wiring changes) unless noted. All web-optimized (≤1600w, q85–88, faststart on video, no audio on loops).
+
+**Wellness §3 thumbnails (4:5, all re-sourced — was all generic cats):**
+- visits → gray kitten cuddled on couch (owner lifestyle) · physical exams → stethoscope-on-dog (no vet face/gloves) · vaccinations → ginger kitten · parasite → dog on grass (kept) · diagnostics → **real pet thorax X-ray** (Brees supplied; Pexels had none).
+
+**Surgery:** hero → tabby in star-print recovery suit (`hero-surgery.mp4` 1600×900, from his .mov) + poster · Core-care split → cone-dog recovery (`img-surgery-split.jpg`). (Closes the old "find a cone/recovery clip" flag.)
+
+**Dentistry:** hero → backlit dog-mouth/teeth close-up (on-theme) + poster · "Why dental care matters" split → two cats grooming · CTA → Jack Russell (tongue, dental-themed).
+
+**Diagnostics:** X-ray thumb → finger on femur-with-plate radiograph · ultrasound thumb → cat beside ultrasound machine · CTA → clinicians reviewing pet chest X-ray (faces turned away). CTA `background-position: center 60%` override (Brees: "a bit higher").
+
+**End-of-Life:** hero → dog silhouette at sunset over water (`hero-eol.mp4`) + poster (closes "Brees will supply EOL video" flag) · hospice split → fluffy gray senior cat resting on cushion by window (`img-eol-split.jpg`) · closer band → hand cradling cat's paw (`img-eol-closer.jpg`).
+
+**Payment Options:** hero → cat petted at sunset, **clipped to 12s** (`hero-payment.mp4`) + poster · CTA → golden retriever on beach (`cta-payment.jpg`), `background-position: center 45%` override (Brees: "dog's face in middle").
+
+**Contact page (3 fixes):**
+1. Hero now matches other pages' height — added `service-hero` class to `<section class="careers-hero service-hero contact-hero">` (was 80vh via bare careers-hero; now `clamp(440px,64vh,640px)`).
+2. Map now **flush with footer** — added `.invite.is-page { padding-bottom: 0; }` (dropped the 80px section bottom padding).
+3. Hero video → dog+cat by window, **clipped to 10s** (`hero-contact.mp4`) + poster.
+
+**Nav — Home & Team made non-clickable (all 9 pages, desktop + mobile + footer):** `<a href=...>` → `<a class="nav-dead" aria-disabled="true">` for Home (dead/static) and Team (team.html still a 404). Added `.nav-dead { pointer-events:none; cursor:default; }`. Team remains the only nav 404 target but is now inert; logo seal still links home.
+
+**Image-rule notes (locked CLAUDE.md rules):** kept no-vet-faces / no-gloves / no-indoor-panting throughout for Pexels picks; a few Brees-supplied shots (cone dog, dental dog, beach golden) have tongue/panting but he chose them and context (recovery/outdoors) reads fine.
+
+**STILL TODO (unchanged):** build `team.html` (last 404) · swap remaining placeholders → real BMAH footage/photos · confirm Instagram URL + real phone (`000-000-0000`) + payment specifics + `info@bonniemaraah.com` live inbox · reconcile `staging`↔`main` "no careers" before go-live.
+
+---
+
+## ▶ PRIOR KICKOFF (2026-06-30 EOD, part 1+2)
 
 **Where we are:** All work on the **`staging`** branch. **2026-06-30 work is committed LOCALLY only (Brees asked for a local commit, NOT pushed).** `origin/staging` is now behind — `git push` when ready to back up / share the preview. Preview URL (after push): `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`. Local preview: `py -3 -m http.server 8767` from project root.
 

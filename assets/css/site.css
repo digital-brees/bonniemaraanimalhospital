@@ -957,6 +957,9 @@
     .invite.is-page .invite-card { margin-top: 0; }
     .invite.is-page .address > .eyebrow { display: inline-flex; margin: 0 0 26px; }
 
+    /* Contact page: map sits flush against the footer (drop section bottom padding) */
+    .invite.is-page { padding-bottom: 0; }
+
     /* Embedded Google map on the contact page */
     .contact-map {
       /* full-bleed: break out of the centered .invite-wrap to span the viewport */
@@ -1848,6 +1851,9 @@ footer.site a:focus-visible,
 .nav-trigger[aria-expanded="true"] { color: #FFFFFF; }
 .nav-trigger .caret { width: 9px; height: 6px; transition: transform 0.22s ease; }
 .has-menu.open .nav-trigger .caret { transform: rotate(180deg); }
+
+/* Static (non-clickable) nav labels — Home, Team (dead page). Keep nav styling, drop interaction. */
+.nav-dead { pointer-events: none; cursor: default; }
 
 .nav-menu {
   position: absolute;
@@ -2843,5 +2849,5 @@ footer.site .foot-info a:hover { color: #FFFFFF; }
 .svc-cta.cta-wellness    { background-image: url('../images/cta-wellness.jpg'); }
 .svc-cta.cta-surgery     { background-image: url('../images/cta-surgery.jpg'); }
 .svc-cta.cta-dentistry   { background-image: url('../images/cta-dentistry.jpg'); }
-.svc-cta.cta-diagnostics { background-image: url('../images/cta-diagnostics.jpg'); }
-.svc-cta.cta-payment     { background-image: url('../images/cta-payment.jpg'); }
+.svc-cta.cta-diagnostics { background-image: url('../images/cta-diagnostics.jpg'); background-position: center 60%; }
+.svc-cta.cta-payment     { background-image: url('../images/cta-payment.jpg'); background-position: center 45%; }
