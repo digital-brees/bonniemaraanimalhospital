@@ -12,23 +12,26 @@
 
 ---
 
-## ▶ NEXT SESSION KICKOFF (resume here — wrapped 2026-06-29 EOD)
+## ▶ NEXT SESSION KICKOFF (resume here — wrapped 2026-06-30 EOD)
 
-**Where we are:** All work is on the **`staging`** branch. Latest local commit `e5c6b6c`. Earlier commits this session were pushed to `origin/staging`, but **the EOD notes commit is LOCAL-ONLY (not pushed)** per Brees — `git push` first thing tomorrow to sync (`origin/staging` is one commit behind on notes; code is pushed through `dedff88`). Preview URL: `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`.
+**Where we are:** All work on the **`staging`** branch. **2026-06-30 work is committed LOCALLY only (Brees asked for a local commit, NOT pushed).** `origin/staging` is now behind — `git push` when ready to back up / share the preview. Preview URL (after push): `https://bonniemara-git-staging-brees-projects-61eb3847.vercel.app/`. Local preview: `py -3 -m http.server 8767` from project root.
 
-**Done & shipped (5 service pages, each a distinct composition — no clones):**
-- wellness, surgery, dentistry, diagnostics, end-of-life — all have video heroes, overlap intro cards, image/dark bands, CTA image bands. Diagnostics imaging = wellness-sec3 numbered items on dark. EOL = hospice split + 50/50 euth|in-home twin + image closer.
-- Nav: **Contact** is now a top-level item; Client Corner = Payment Options + FAQs only (all pages, desktop + mobile).
+**Done this session (2026-06-30, w/ Brees):**
+1. **Footer fully rebuilt** → multi-column DE pattern (brand+tagline+social · Explore · Visit · Contact + legal bar), on all 9 pages. See "Footer" section below.
+2. **Dentistry redesign** — the two flat text blocks Brees disliked are now distinct beats: "Safe anesthesia" = full-bleed dark image band + dashed safeguards pair (`.dn-anes`); "Between visits" = light editorial 2-col with an "Our team can" dashed list (`.dn-home`). Old `.dn-panel`/`.dn-tip` removed.
+3. **`payment-options.html` BUILT** (was a nav 404) — full page in the design language: intro lead → Ways to Pay (4-item: cards · cash · Financing options ↓ · Pet insurance ↓, the last two jump-link to their sections) → Financing (real **CareCredit + Scratchpay logos**, "Learn more & apply" → real apply URLs) → Pet insurance dark band (3 steps) → CTA. Copy is AUTHORED placeholder (BMAH had no payment copy) — every specific FLAGGED in HTML comments.
+4. **Real brand logos** downloaded from the brands' own sites → `assets/images/logos/carecredit.svg` + `scratchpay.svg`. Apply links: CareCredit `carecredit.com/apply/`, Scratch `scratchpay.com/how-it-works/` (swap for BMAH's practice-specific enrolled links once enrolled).
+5. **SITE-WIDE MEDIA DE-DUPLICATION** (Brees: no duplicate images/videos + every interior hero on video). Sourced 22 royalty-free **Pexels** assets. Now **every hero has its own unique video + poster**, every split/band image is unique, and a render-time audit confirms **zero cross-page duplicate content images**. See "Media inventory" below. The repeated `.svc-cta` CTA band + dentistry `.dn-stat` were converted to **clean navy fills** (no photo) to kill the biggest dups — confirm Brees is OK keeping those imageless.
+6. **Feedbucket installed** in `<head>` on all 9 pages (key `s0t0DGG3afGhYCgwE2Tw`).
 
 **Brees's LOCKED design dislikes (do NOT reintroduce):** glass/translucent pills & boxes · one-side (left-rule) accent-border cards · decorative (non-clicking) hover effects · AI-tell patterns. Prefer: editorial top-hairline dividers, dashed/numbered hairline lists, clean fills, riff-don't-clone per page.
 
-**TOMORROW — prioritized to-do:**
-1. **`git push`** the EOD notes commit.
-2. **Team.html + Payment-Options.html** — still 404 in nav (no source copy; BMAH is verbatim-only). Decide: scaffold w/ placeholders vs wait for copy. (Team CAN be partly real from `assets/copy/name-story.md` + `careers.md`.)
-3. **Real imagery** — replace `placehold.co` thumbnails (wellness 01–05 + diagnostics imaging 01/02) and per-service hero VIDEOS (only 2 placeholder clips reused; need a real surgical/clinical clip).
-4. **Confirm** Instagram URL + real phone (still `000-000-0000`); FAQs link on subpages = `index.html#faqs` (OK), home = `#faqs`.
-5. Reduced-motion note: scroll reveals are gated behind `prefers-reduced-motion`; Brees runs Reduce Motion ON, so toggle it OFF to preview the per-beat reveals.
-6. Eventually: reconcile `staging` ↔ `main` "no careers" decision before go-live merge.
+**NEXT — prioritized to-do:**
+1. **`team.html`** — the LAST remaining nav 404. Can be partly real from `assets/copy/name-story.md` + `careers.md` (Dr. Putnam bio etc.).
+2. **Confirm placeholders:** Instagram URL · real phone (`000-000-0000`) · payment specifics (accepted methods, that BMAH actually enrolls w/ CareCredit + Scratchpay, practice-specific apply links, reimbursement model) · `info@bonniemaraah.com` must be a live inbox (now shown in footer).
+3. **Swap Pexels placeholders → real BMAH footage/photos** when available (all hero videos, splits, bands are Pexels stand-ins; compliant but generic).
+4. Reduced-motion note: scroll reveals gated behind `prefers-reduced-motion`; Brees runs Reduce Motion ON — toggle OFF to preview per-beat reveals + hero video autoplay.
+5. Eventually: reconcile `staging` ↔ `main` "no careers" decision before go-live merge; then `git push` staging.
 
 ---
 
@@ -126,6 +129,12 @@ All copy verbatim. All validated: 0 overflow @375/768/1440, valid heading order,
   - **2026-06-04 cleanup note (RESOLVED 2026-06-17):** Mistakenly created a DUPLICATE Vercel project `bonniemaraanimalhospital` under scope `brees-projects-61eb3847`. **Verified 2026-06-17 it is GONE and never threatened the live site:** `vercel project ls` → "No projects found", `vercel project inspect bonniemaraanimalhospital` → "There is no project". The duplicate also never owned the domain — `vercel domains inspect bonniemaraah.com` returns "You don't have access to the domain ... under brees-projects-61eb3847", confirming the real hosting project (which owns the domain) lives under a DIFFERENT account/team. Live `www.bonniemaraah.com` serves 200 OK from that other project; apex 307→www. No action needed.
 
 ---
+
+## Footer (rebuilt 2026-06-30) + Feedbucket
+
+**Footer = multi-column DE pattern** (matches Lewis & Clark / Cement Creek), inline-duplicated on all 9 pages, styled in `site.css` (`footer.site` grid). Columns: **Brand** (seal + name + "Opening Summer 2026" + tagline "Independently owned, low-stress veterinary care for dogs and cats." + Instagram) · **Explore** (Home/Team/Services/Payment Options/FAQs/Contact) · **Visit** (address→Google Maps + hours, line icons) · **Contact** (Call/Text/Email w/ icons + uppercase labels). Legal bar = copyright + "Designed by Digital Empathy". Responsive: 4-col → 2-col @920 → 1-col @560. Footer markup identical per page EXCEPT the FAQ link (`#faqs` on index, `index.html#faqs` on subpages). NOTE: email `info@bonniemaraah.com` is shown — must be a live inbox.
+
+**Feedbucket** (client feedback widget) installed in `<head>` on all 9 pages, key `s0t0DGG3afGhYCgwE2Tw` (loads `cdn.feedbucket.app/assets/feedbucket.js`, deferred).
 
 ## Design system (in `:root` of site.css)
 
@@ -321,9 +330,31 @@ Ran axe-core (wcag2a + wcag2aa + best-practice, injected via CDN through Playwri
 
 ---
 
-## Asset inventory (after cleanup)
+## Media inventory + per-page map (2026-06-30 — DE-DUPLICATED, every asset unique to ONE page)
 
-`assets/images/`: brick-wall.jpg · careers-hero-poster.jpg · careers.jpg · dog-cat-sleeping.jpg · hero-bmah-poster.jpg · hiring-teaser.jpg · og-bmah.jpg · apple-touch-icon.png · favicon-{16,32,48,180,192,512}.png · `logo/logo-page-1.png`
-`assets/video/`: careers-hero.mp4 · hero-bmah.mp4
-Root: `favicon.ico` · `sitemap.xml` · `make_seo_assets.py` (asset generator)
-(Orphans removed this session: dog-beach, cat-sleeping, owner-dog-cuddle, careers-hero.jpg still, santa-barbara-sunrise, ocean-horizon.mp4)
+**Rule going forward: NO image/video may be reused across pages** (logo + favicons/og excepted). Render-time audit passes (0 cross-page dupes). When adding media, give it a page-scoped filename.
+
+**Hero VIDEOS** (`assets/video/`, each + matching `assets/images/hero-*-poster.jpg`):
+| Page | video | poster | source |
+|---|---|---|---|
+| index (home) | `hero-bmah.mp4` | `hero-bmah-poster.jpg` | original BMAH (beach) — KEEP |
+| careers | `careers-hero.mp4` | `careers-hero-poster.jpg` | original (exam room) — KEEP |
+| wellness | `hero-wellness.mp4` | `hero-wellness-poster.jpg` | Pexels (retriever on grass) |
+| surgery | `hero-surgery.mp4` | `hero-surgery-poster.jpg` | Pexels (surgical instruments) |
+| dentistry | `hero-dentistry.mp4` | `hero-dentistry-poster.jpg` | Pexels (calm dog face) |
+| diagnostics | `hero-diagnostics.mp4` | `hero-diagnostics-poster.jpg` | Pexels (lab microscope) |
+| end-of-life | `hero-eol.mp4` | `hero-eol-poster.jpg` | Pexels (dog in garden) |
+| contact | `hero-contact.mp4` | `hero-contact-poster.jpg` | Pexels (cat at home) |
+| payment-options | `hero-payment.mp4` | `hero-payment-poster.jpg` | Pexels (dog on lawn) |
+
+**Content / band images** (`assets/images/`, all Pexels, page-scoped):
+- Splits: `img-dentistry-split.jpg` (golden) · `img-surgery-split.jpg` (owner embrace) · `img-eol-split.jpg` (sunset shepherd) · `img-diagnostics-split.jpg` (tabby)
+- Immersive bands: `img-surgery-quote.jpg` (paw-hold → `.svc-quote`) · `img-dentistry-anes.jpg` (sleeping cat → `.dn-anes`) · `img-eol-band.jpg` (senior+dog → `.eol-band`) · `img-eol-closer.jpg` (sunset field → `.eol-closer`)
+- **Home-only** (each now unique to index): `dog-cat-sleeping.jpg` (services img) · `brick-wall.jpg` (paw quote band) · `hero-bmah-poster.jpg` (hero) · `hiring-teaser.jpg` (unused now — careers dropped)
+- `careers.jpg` → careers.html application-form image only.
+- **Logos:** `assets/images/logos/carecredit.svg` + `scratchpay.svg` (real, from brand sites).
+- SEO/icons: `og-bmah.jpg` · `apple-touch-icon.png` · `favicon-{16,32,48,180,192,512}.png` · `logo/logo-page-1.png` · root `favicon.ico` · `sitemap.xml` · `make_seo_assets.py`.
+
+**`.svc-cta` (CTA band on wellness/surgery/dentistry/diagnostics/payment) + `.dn-stat` (dentistry stat) are now CLEAN NAVY GRADIENTS** (no photo) — done to remove shared-image dups; matches the "prefer clean fills" rule. Confirm Brees wants them imageless (else source unique-per-page CTA photos).
+
+**All new media is Pexels (royalty-free, credit appreciated not required)** — solid placeholders until real BMAH footage/photos arrive. Compliant with content rules (no clinic vet-faces, gloves only on the surgical-instruments clip, no indoor panting).
