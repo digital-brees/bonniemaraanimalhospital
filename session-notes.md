@@ -39,6 +39,8 @@ Brees supplied most images/videos from his Downloads (Shutterstock-licensed) + a
 
 **Nav — Home & Team made non-clickable (all 9 pages, desktop + mobile + footer):** `<a href=...>` → `<a class="nav-dead" aria-disabled="true">` for Home (dead/static) and Team (team.html still a 404). Added `.nav-dead { pointer-events:none; cursor:default; }`. Team remains the only nav 404 target but is now inert; logo seal still links home.
 
+**Footer Explore column — removed Home + Services (all 9 pages).** Now: Team · Payment Options · FAQs · Contact. (Header desktop/mobile nav unchanged — still has Home + Services dropdown.)
+
 **Image-rule notes (locked CLAUDE.md rules):** kept no-vet-faces / no-gloves / no-indoor-panting throughout for Pexels picks; a few Brees-supplied shots (cone dog, dental dog, beach golden) have tongue/panting but he chose them and context (recovery/outdoors) reads fine.
 
 **STILL TODO (unchanged):** build `team.html` (last 404) · swap remaining placeholders → real BMAH footage/photos · confirm Instagram URL + real phone (`000-000-0000`) + payment specifics + `info@bonniemaraah.com` live inbox · reconcile `staging`↔`main` "no careers" before go-live.
